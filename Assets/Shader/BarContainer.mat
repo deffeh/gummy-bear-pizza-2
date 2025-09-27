@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnergyBar
-  m_Shader: {fileID: 4800000, guid: eb35007d6da3b7a42b685d42a6c070e0, type: 3}
+  m_Name: BarContainer
+  m_Shader: {fileID: 4800000, guid: c5aee1fb349eb484781926dd9cf214ed, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -41,8 +41,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Alpha: 1
+    - _B: 0.85
+    - _BG: 0
+    - _BR: 0
+    - _C: 1.07
     - _EnableExternalAlpha: 0
+    - _F: 56.27
+    - _G: 1
+    - _GB: 0
+    - _GR: 0
     - _Percent: 0.8565996
+    - _R: 1
+    - _RB: 0
+    - _RG: 0
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
