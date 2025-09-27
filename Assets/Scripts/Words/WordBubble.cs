@@ -1,0 +1,73 @@
+using TMPro;
+using UnityEngine;
+
+public class WordBubble : MonoBehaviour
+{
+    [SerializeField] private TMP_Text _baseText;
+    [SerializeField] private TMP_Text _typingText; 
+    [SerializeField] private float _lifetime;
+    [SerializeField] private string _word;
+    private int _curWordIndex;
+    private bool _completed;
+
+    public void Init(string word, float lifetime)
+    {
+        _word = word;
+        _lifetime = lifetime;
+        _curWordIndex = 0;
+    }
+
+    public void Update()
+    {
+        if (_lifetime <= 0) { return; }
+
+        //Get all keyboard input
+        if (Input.anyKeyDown)
+        {
+            string input = Input.inputString;
+            HandleInput(input);
+        }
+
+        //Handle lifetime
+        if (_lifetime > 0 && !_completed)
+        {
+            _lifetime -= Time.deltaTime;
+            if (_lifetime <= 0)
+            {
+                //kill itself
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void HandleInput(string input)
+    {
+        if (input == null || input.Length == 0) { return; }
+        int len = input.Length;
+        if (_word.Substring(_curWordIndex, len) == input)
+        {
+            _curWordIndex += len;
+            _typingText.text += input;
+            if (_curWordIndex >= _word.Length)
+            {
+                OnComplete();
+            }
+        }
+        else
+        {
+            ResetWord();
+        }
+    }
+
+    private void OnComplete()
+    {
+        _completed = true;
+        Destroy(gameObject);
+    }
+
+    private void ResetWord()
+    {
+        _curWordIndex = 0;
+        _typingText.text = "";
+    }
+}
