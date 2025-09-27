@@ -21,15 +21,18 @@ namespace Reels
         private bool _isSwiped = false;
         private bool _isActive = false;
         private Vector2 _originalPosition;
-        private Queue<Reel> _reelQueue;
+        private Queue<Reel> _reelQueue = new Queue<Reel>();
 
         private void Awake()
         {
             if (phoneRect == null)
                 phoneRect = GetComponent<RectTransform>();
+        }
 
+        public void Start()
+        {
             _originalPosition = phoneRect.anchoredPosition;
-            _reelQueue = new Queue<Reel>();
+            Debug.Log(_originalPosition);
         }
 
         public bool IsActive()
@@ -47,15 +50,20 @@ namespace Reels
                 AddReel();
             
             _isActive = true;
+            
+            Debug.Log(_originalPosition);
+
         }
 
         public void ClosePhone()
         {
+            Debug.Log(_originalPosition);
+            
             _isActive = false;
             
             phoneRect.DOAnchorPos(_originalPosition, animationDuration).SetEase(Ease.OutCubic);
             
-            ClearAllReels();
+            // ClearAllReels();
         }
 
         public void Swipe()
