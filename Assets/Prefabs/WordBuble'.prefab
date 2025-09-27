@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 150, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8777594606153354726
 MonoBehaviour:
@@ -84,6 +84,8 @@ MonoBehaviour:
   _text: {fileID: 5074824612551288593}
   _lifetime: 100
   _word: asdf
+  _critChance: 0
+  _critMultiplier: 0
 --- !u!222 &1773068889418072778
 CanvasRenderer:
   m_ObjectHideFlags: 0

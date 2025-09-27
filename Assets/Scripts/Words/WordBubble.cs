@@ -4,8 +4,11 @@ using UnityEngine;
 public class WordBubble : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
-    [SerializeField] private float _lifetime;
+    [SerializeField] private float _lifetime = 1f;
     [SerializeField] private string _word;
+    [SerializeField] private float _critChance;
+    [SerializeField] private float _critMultiplier;
+
     private int _curWordIndex;
     private bool _completed;
 
