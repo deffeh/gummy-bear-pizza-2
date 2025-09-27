@@ -5,7 +5,10 @@ using TMPro;
 public class DocumentPage : MonoBehaviour
 {
     public static DocumentPage Instance;
-    public TextMeshProUGUI  text;
+    public Page PagePrefab;
+    public bool debug = false;
+    private Page curPage;
+    private TextMeshProUGUI text;
     public int wordLimit = 300;
     public string essay;
 
@@ -20,6 +23,9 @@ public class DocumentPage : MonoBehaviour
     private float goalLerp = 0;
 
     private int curWordCount = 0;
+    private int pageWordCount = 0;
+    public Vector2 PageTossForce = new Vector2(100, 100);
+    public float RotationForce = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,20 +35,22 @@ public class DocumentPage : MonoBehaviour
             return;
         }
         Instance = this;
-        curEssay = new StringBuilder();
-        goalEssay = new StringBuilder();
         essay = essay.TrimEnd();
         essayArr = essay.Split(" ");
-        string test = "asdf";
+        NewPage();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (debug)
         {
-            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AddWords(100);
+            } 
         }
+        
 
         if (curLerp != goalLerp && goalLerp != 0)
         {
@@ -59,6 +67,26 @@ public class DocumentPage : MonoBehaviour
         }
     }
 
+    private void NewPage()
+    {
+        if (curPage)
+        {
+            curPage.rb.simulated = true;
+            float x = Random.Range(-PageTossForce.x, PageTossForce.x);
+            float y = Random.Range(PageTossForce.y * .4f, PageTossForce.y);
+            curPage.rb.AddForce(new Vector2(x, y));
+            curPage.rb.AddTorque(Random.Range(-RotationForce, RotationForce));
+            curPage.text.text = goalEssay.ToString();
+            Destroy(curPage.gameObject, 10f);
+        }
+        pageWordCount = 0;
+        curEssay = new StringBuilder();
+        goalEssay = new StringBuilder();
+        curLerp = 0;
+        curPage = Instantiate(PagePrefab, transform);
+        text = curPage.text;
+        curPage.transform.SetAsFirstSibling();
+    }
     public void AddWords(int words)
     {
         for (int i = 0; i < words; i++)
@@ -66,8 +94,14 @@ public class DocumentPage : MonoBehaviour
             goalEssay.Append(essayArr[curWordCount]);
             goalEssay.Append(" ");
             curWordCount++;
+            pageWordCount++;
+            if (curWordCount >= essayArr.Length) curWordCount = 0;
+            if (pageWordCount > wordLimit)
+            {
+                NewPage();
+            }
             goalLerp = goalEssay.Length;
         }
-
+        
     }
 }
