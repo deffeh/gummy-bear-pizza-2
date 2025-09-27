@@ -1,8 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public abstract class Reel : MonoBehaviour
+namespace Reels
 {
-    public Texture media;
+    public abstract class Reel : MonoBehaviour
+    {
+        [SerializeField] private Texture2D[] textures;
 
-    public abstract void OnActivate();
+        public void Initialize()
+        {
+            if (textures.Length <= 0) return;
+            
+            int index = Random.Range(0, textures.Length - 1);
+            Texture2D texture = textures[index];
+
+            Image imageComponent = GetComponentInParent<Image>();
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            
+            if (imageComponent != null) imageComponent.sprite = sprite;
+        }
+
+        public abstract void OnActivate();
+    }
 }
