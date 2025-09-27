@@ -8,7 +8,7 @@ public class WordBubble : MonoBehaviour
     [SerializeField] private string _word;
     [SerializeField] private int _rewardAmount;
     [SerializeField] private float _critChance;
-    [SerializeField] private float _critMultiplier;
+    [SerializeField] private float _fatigueAmount = 10f;
 
     private int _curWordIndex;
     private bool _completed;
@@ -30,7 +30,7 @@ public class WordBubble : MonoBehaviour
 
     public void Update()
     {
-        if (_lifetime <= 0) { return; }
+        if (GameManager.Instance.RoundOver) { return; }
 
         //Get all keyboard input
         if (Input.anyKeyDown)
@@ -79,7 +79,10 @@ public class WordBubble : MonoBehaviour
     private void OnComplete()
     {
         _completed = true;
-        DocumentPage.Instance?.AddWords(_rewardAmount);
+        float attemptCrit = Random.Range(0f, 1f);
+        
+        DocumentPage.Instance?.AddWords(attemptCrit < _critChance ? _rewardAmount * 2 : _rewardAmount);
+        PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
         Destroy(gameObject);
     }
 
@@ -100,4 +103,5 @@ public class WordBubble : MonoBehaviour
         float newWidth = width *= (1 + (.2f * (wordLen - 3)));
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
     }
+    
 }

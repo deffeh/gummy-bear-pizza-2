@@ -3,14 +3,22 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
     public float DrainRate = 1;
     public float MaxFatigue = 100;
     private float curFatigue = 100;
     public EnergyBar Bar;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     // Update is called once per frame
@@ -19,7 +27,7 @@ public class PlayerManager : MonoBehaviour
         UpdateEnergy(- DrainRate * Time.deltaTime);
     }
 
-    private void UpdateEnergy(float change)
+    public void UpdateEnergy(float change)
     {
         curFatigue += change;
         curFatigue = Mathf.Clamp(curFatigue, 0, MaxFatigue);

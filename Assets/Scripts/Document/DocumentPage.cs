@@ -26,6 +26,7 @@ public class DocumentPage : MonoBehaviour
     private int pageWordCount = 0;
     public Vector2 PageTossForce = new Vector2(100, 100);
     public float RotationForce = 100;
+    public int totalWordCount = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -93,6 +94,7 @@ public class DocumentPage : MonoBehaviour
         {
             goalEssay.Append(essayArr[curWordCount]);
             goalEssay.Append(" ");
+            totalWordCount++;
             curWordCount++;
             pageWordCount++;
             if (curWordCount >= essayArr.Length) curWordCount = 0;
@@ -101,6 +103,11 @@ public class DocumentPage : MonoBehaviour
                 NewPage();
             }
             goalLerp = goalEssay.Length;
+        }
+
+        if (totalWordCount >= GameManager.Instance.WordsToWin)
+        {
+            GameManager.Instance.EndGame(true);
         }
         
     }

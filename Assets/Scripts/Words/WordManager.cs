@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class WordManager : MonoBehaviour
 {
-    public static WordManager Get;
+    public static WordManager Instance;
     [SerializeField] private WordBubble _wordBubblePrefab;
     [SerializeField] private float _bubbleDuration;
     [SerializeField] private float _bubbleRate;
     [SerializeField] private int _rewardWordsPerBubble;
     [SerializeField] private List<TextAsset> _textFiles;
     private List<List<string>> _listOfListsOfWords;
-    private float _bubbleMultiplier;
     private float _wordLength;
     private float _baseBubbleRate;
 
     private void Awake()
     {
-        if (Get == null)
+        if (Instance == null)
         {
-            Get = this;
+            Instance = this;
         }
         else
         {
@@ -34,6 +33,7 @@ public class WordManager : MonoBehaviour
     public void Init()
     {
         _baseBubbleRate = _bubbleRate;
+        gameObject.SetActive(true);
     }
 
 
@@ -79,7 +79,7 @@ public class WordManager : MonoBehaviour
         int index = wordLength - 3;
         List<string> words = _listOfListsOfWords[index];
         if (words.Count <= 0) { return ""; }
-        
+
         int randomIdx = Random.Range(0, words.Count);
         return words[randomIdx];
     }
