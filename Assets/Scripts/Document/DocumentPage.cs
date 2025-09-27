@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 public class DocumentPage : MonoBehaviour
 {
+    public static DocumentPage Instance;
     public TextMeshProUGUI  text;
     public int wordLimit = 300;
     public string essay;
@@ -22,6 +23,12 @@ public class DocumentPage : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         curEssay = new StringBuilder();
         goalEssay = new StringBuilder();
         essay = essay.TrimEnd();
@@ -34,10 +41,7 @@ public class DocumentPage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            goalEssay.Append(essayArr[curWordCount]);
-            goalEssay.Append(" ");
-            curWordCount++;
-            goalLerp = goalEssay.Length;
+            
         }
 
         if (curLerp != goalLerp && goalLerp != 0)
@@ -53,5 +57,17 @@ public class DocumentPage : MonoBehaviour
             if (changed)
                 text.text = curEssay.ToString();
         }
+    }
+
+    public void AddWords(int words)
+    {
+        for (int i = 0; i < words; i++)
+        {
+            goalEssay.Append(essayArr[curWordCount]);
+            goalEssay.Append(" ");
+            curWordCount++;
+            goalLerp = goalEssay.Length;
+        }
+
     }
 }
