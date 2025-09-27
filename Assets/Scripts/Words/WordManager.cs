@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
@@ -7,6 +9,8 @@ public class WordManager : MonoBehaviour
     [SerializeField] private float _bubbleDuration;
     [SerializeField] private float _bubbleRate;
     [SerializeField] private int _rewardWordsPerBubble;
+    [SerializeField] private List<TextAsset> _textFiles;
+    private List<List<string>> _listOfListsOfWords;
     private float _bubbleMultiplier;
     private float _wordLength;
     private float _baseBubbleRate;
@@ -23,6 +27,7 @@ public class WordManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+        LoadAllWords();
         Init();
     }
 
@@ -45,7 +50,7 @@ public class WordManager : MonoBehaviour
     public void InstantiateBubble()
     {
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWord(), _bubbleDuration, _rewardWordsPerBubble);
+        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble);
         PlaceBubbleRandomly(bubbleFab);
     }
 
@@ -66,8 +71,31 @@ public class WordManager : MonoBehaviour
         bubbleFab.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector2(randomX, randomY), Quaternion.identity);
     }
 
-    private string GetRandomWord()
+    private string GetRandomWordOfLength(int wordLength)
     {
-        return "asdf";
+        //zero indexed so minus 3 from wordLength
+        if (_listOfListsOfWords.Count <= 0) { return ""; }
+
+        int index = wordLength - 3;
+        List<string> words = _listOfListsOfWords[index];
+        if (words.Count <= 0) { return ""; }
+        
+        int randomIdx = Random.Range(0, words.Count);
+        return words[randomIdx];
+    }
+
+    private void LoadAllWords()
+    {
+        _listOfListsOfWords = new List<List<string>>();
+        foreach (TextAsset text in _textFiles)
+        {
+            List<string> result = new List<string>();
+            var words = text.text.Split("\n");
+            foreach (string word in words)
+            {
+                result.Add(word);
+            }
+            _listOfListsOfWords.Add(result);
+        }
     }
 } 

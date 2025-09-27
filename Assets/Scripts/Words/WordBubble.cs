@@ -21,6 +21,7 @@ public class WordBubble : MonoBehaviour
     public void Init(string word, float lifetime, int rewardAmount)
     {
         _word = word;
+        if (word.Length > 3) { ResizeBubble(word.Length); }
         _lifetime = lifetime;
         _curWordIndex = 0;
         _rewardAmount = rewardAmount;
@@ -91,5 +92,12 @@ public class WordBubble : MonoBehaviour
     private string WrapStringInColor(string str, string colorHex)
     {
         return $"<color=#{colorHex}>{str}</color>";
+    }
+
+    private void ResizeBubble(int wordLen)
+    {
+        float width = GetComponent<RectTransform>().rect.width;
+        float newWidth = width *= (1 + (.2f * (wordLen - 3)));
+        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
     }
 }
