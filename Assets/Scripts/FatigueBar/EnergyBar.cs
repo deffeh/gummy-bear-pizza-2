@@ -1,15 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
 {
-    public Material BarMat;
+    private Material BarMat;
     [SerializeField] private float _lerpSpeed = 5f;
+    public Image BarImage;
     private int percentId;
     private float _lerpVal;
     private float _targetVal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        BarMat = new Material(BarImage.material);
+        BarImage.material = BarMat;
         percentId = Shader.PropertyToID("_Percent");
         BarMat.SetFloat(percentId, 1);
     }

@@ -89,7 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f850587c42693e9428ddfe54799afdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BarMat: {fileID: 2100000, guid: a1c5bf48a12aecd4593c529e74fc11e0, type: 2}
+  _lerpSpeed: 5
+  BarImage: {fileID: 9126017877311159459}
 --- !u!1 &4304945061679375936
 GameObject:
   m_ObjectHideFlags: 0
