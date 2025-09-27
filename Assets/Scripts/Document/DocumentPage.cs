@@ -36,6 +36,7 @@ public class DocumentPage : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
         essay = essay.TrimEnd();
         essayArr = essay.Split(" ");
         NewPage();

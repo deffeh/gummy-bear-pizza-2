@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
