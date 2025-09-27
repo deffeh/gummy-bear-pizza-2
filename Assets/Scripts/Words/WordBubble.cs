@@ -3,18 +3,23 @@ using UnityEngine;
 
 public class WordBubble : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _baseText;
-    [SerializeField] private TMP_Text _typingText; 
+    [SerializeField] private TMP_Text _text;
     [SerializeField] private float _lifetime;
     [SerializeField] private string _word;
     private int _curWordIndex;
     private bool _completed;
+
+    public void Start()
+    {
+        ResetWord();
+    }
 
     public void Init(string word, float lifetime)
     {
         _word = word;
         _lifetime = lifetime;
         _curWordIndex = 0;
+        ResetWord();
     }
 
     public void Update()
@@ -47,10 +52,16 @@ public class WordBubble : MonoBehaviour
         if (_word.Substring(_curWordIndex, len) == input)
         {
             _curWordIndex += len;
-            _typingText.text += input;
             if (_curWordIndex >= _word.Length)
             {
+                _text.text = WrapStringInColor(_text.text, "000000");
                 OnComplete();
+            }
+            else
+            {
+                string typed = _word.Substring(0, _curWordIndex);
+                string untyped = _word.Substring(_curWordIndex);
+                _text.text = WrapStringInColor(typed, "000000") + WrapStringInColor(untyped, "00000080");
             }
         }
         else
@@ -68,6 +79,11 @@ public class WordBubble : MonoBehaviour
     private void ResetWord()
     {
         _curWordIndex = 0;
-        _typingText.text = "";
+        _text.text = WrapStringInColor(_word, "00000080");
+    }
+
+    private string WrapStringInColor(string str, string colorHex)
+    {
+        return $"<color=#{colorHex}>{str}</color>";
     }
 }
