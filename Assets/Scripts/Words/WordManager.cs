@@ -6,6 +6,7 @@ public class WordManager : MonoBehaviour
     [SerializeField] private WordBubble _wordBubblePrefab;
     [SerializeField] private float _bubbleDuration;
     [SerializeField] private float _bubbleRate;
+    [SerializeField] private int _rewardWordsPerBubble;
     private float _bubbleMultiplier;
     private float _wordLength;
     private float _baseBubbleRate;
@@ -44,7 +45,7 @@ public class WordManager : MonoBehaviour
     public void InstantiateBubble()
     {
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWord(), _bubbleDuration);
+        bubbleFab.Init(GetRandomWord(), _bubbleDuration, _rewardWordsPerBubble);
         PlaceBubbleRandomly(bubbleFab);
     }
 

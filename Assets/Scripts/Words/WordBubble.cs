@@ -6,6 +6,7 @@ public class WordBubble : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private float _lifetime = 1f;
     [SerializeField] private string _word;
+    [SerializeField] private int _rewardAmount;
     [SerializeField] private float _critChance;
     [SerializeField] private float _critMultiplier;
 
@@ -17,11 +18,12 @@ public class WordBubble : MonoBehaviour
         ResetWord();
     }
 
-    public void Init(string word, float lifetime)
+    public void Init(string word, float lifetime, int rewardAmount)
     {
         _word = word;
         _lifetime = lifetime;
         _curWordIndex = 0;
+        _rewardAmount = rewardAmount;
         ResetWord();
     }
 
@@ -76,6 +78,7 @@ public class WordBubble : MonoBehaviour
     private void OnComplete()
     {
         _completed = true;
+        DocumentPage.Instance?.AddWords(_rewardAmount);
         Destroy(gameObject);
     }
 
