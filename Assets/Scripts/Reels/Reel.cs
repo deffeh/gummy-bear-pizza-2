@@ -11,7 +11,7 @@ namespace Reels
         {
             if (textures.Length <= 0) return;
             
-            int index = Random.Range(0, textures.Length - 1);
+            int index = Random.Range(0, textures.Length);
             Texture2D texture = textures[index];
 
             Image imageComponent = GetComponentInParent<Image>();

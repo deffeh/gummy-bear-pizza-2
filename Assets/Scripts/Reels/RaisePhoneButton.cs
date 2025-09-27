@@ -1,11 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Reels
 {
     public class RaisePhoneButton : MonoBehaviour
     {
-        [SerializeField] private PhoneManager phone;
-        
-        // void OnOpen
+        private Button _button;
+
+        public void Start()
+        {
+            _button = GetComponent<Button>();
+        }
+        public void Disable()
+        {
+            if (_button != null) _button.interactable = false;
+        }
     }
 }

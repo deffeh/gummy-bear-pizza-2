@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -9,14 +10,16 @@ namespace Reels
     {
         [SerializeField] private RectTransform phoneRect;        
         [SerializeField] private RectTransform screen;           
-        [SerializeField] private Button raisePhoneButton;
 
         [SerializeField] private GameObject[] reelPrefabs;       
-        [SerializeField] private float animationDuration = 0.5f;
+        [SerializeField] private float animationDuration = 1.0f;
         [SerializeField] private Vector2 activePosition;         
         [SerializeField] private int verticalOffset = -1610;
-        [SerializeField] private int initialQueueSize = 3;
+        [SerializeField] private int maxQueueSize = 3;
+        [SerializeField] private float swipeCooldown = 0.3f;
 
+        private bool _isSwiped = false;
+        private bool _isActive = false;
         private Vector2 _originalPosition;
         private Queue<Reel> _reelQueue;
 
@@ -29,35 +32,83 @@ namespace Reels
             _reelQueue = new Queue<Reel>();
         }
 
+        public bool IsActive()
+        {
+            return _isActive; 
+        }
+
         public void OpenPhone()
         {
             phoneRect.DOAnchorPos(activePosition, animationDuration).SetEase(Ease.OutCubic);
 
-            if (raisePhoneButton != null)
-                raisePhoneButton.interactable = false;
-
-            for (int i = 0; i < initialQueueSize; i++) AddReel();
+            ClearAllReels();
+            
+            for (int i = 0; i < maxQueueSize; i++) 
+                AddReel();
+            
+            _isActive = true;
         }
 
         public void ClosePhone()
         {
+            _isActive = false;
+            
             phoneRect.DOAnchorPos(_originalPosition, animationDuration).SetEase(Ease.OutCubic);
+            
+            ClearAllReels();
         }
 
         public void Swipe()
         {
+            if (_isSwiped || !_isActive) return;
+            
+            _isSwiped = true;
+            
+            StartCoroutine(SwipeCooldownRoutine());
+            
             AddReel();
-
-            Vector2 nextPos = phoneRect.anchoredPosition + new Vector2(0, verticalOffset);
-            phoneRect.DOAnchorPos(nextPos, animationDuration).SetEase(Ease.OutCubic);
-
-            if (_reelQueue.Count > 3)
+            
+            foreach (Reel reel in _reelQueue)
             {
-                Reel oldReel = _reelQueue.Dequeue();
-                Destroy(oldReel);
+                if (reel != null)
+                {
+                    RectTransform reelRect = reel.GetComponent<RectTransform>();
+                    if (reelRect != null)
+                    {
+                        Vector2 newPos = reelRect.anchoredPosition + new Vector2(0, -verticalOffset);
+                        reelRect.DOAnchorPos(newPos, animationDuration).SetEase(Ease.OutCubic);
+                    }
+                }
+            }
+            
+            Reel reelToDestroy = null;
+            if (_reelQueue.Count > 0)
+            {
+                reelToDestroy = _reelQueue.Dequeue();
+            }
+            
+            if (reelToDestroy != null)
+            {
+                RectTransform reelRect = reelToDestroy.GetComponent<RectTransform>();
+                if (reelRect != null)
+                {
+                    Vector2 newPos = reelRect.anchoredPosition + new Vector2(0, -verticalOffset);
+                    reelRect.DOAnchorPos(newPos, animationDuration)
+                        .SetEase(Ease.OutCubic)
+                        .OnComplete(() => {
+                            if (reelToDestroy != null)
+                                Destroy(reelToDestroy.gameObject);
+                        });
+                }
             }
         }
 
+        private IEnumerator SwipeCooldownRoutine()
+        {
+            yield return new WaitForSeconds(swipeCooldown);
+            _isSwiped = false;
+        }
+        
         private void AddReel()
         {
             GameObject reelPrefab = GetRandomReelPrefab();
@@ -66,13 +117,19 @@ namespace Reels
             GameObject reelObj = Instantiate(reelPrefab, screen, false);
             Reel newReel = reelObj.GetComponent<Reel>();
             
+            if (newReel == null)
+            {
+                Destroy(reelObj);
+                return;
+            }
+            
             newReel.Initialize();
 
             RectTransform reelRect = newReel.GetComponent<RectTransform>();
             if (reelRect != null)
             {
-                int reelCount = screen.childCount - 1;
-                reelRect.anchoredPosition = new Vector2(0, verticalOffset * reelCount);
+                float yPos = verticalOffset * (_reelQueue.Count);
+                reelRect.anchoredPosition = new Vector2(0, yPos);
             }
 
             _reelQueue.Enqueue(newReel);
@@ -81,10 +138,22 @@ namespace Reels
         private GameObject GetRandomReelPrefab()
         {
             if (reelPrefabs == null || reelPrefabs.Length == 0)
+            {
                 return null;
+            }
 
             int index = Random.Range(0, reelPrefabs.Length);
             return reelPrefabs[index];
+        }
+        
+        private void ClearAllReels()
+        {
+            while (_reelQueue.Count > 0)
+            {
+                Reel reel = _reelQueue.Dequeue();
+                if (reel != null)
+                    Destroy(reel.gameObject);
+            }
         }
     }
 }

@@ -124,6 +124,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2948600058563495243, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
   m_PrefabInstance: {fileID: 5993041245119977312}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &505778220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5393825452221573540, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+  m_PrefabInstance: {fileID: 5993041245119977312}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbd7ba4d4aa48243b60781f1d770396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &505778221 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
@@ -756,16 +767,44 @@ PrefabInstance:
       value: 0.29527998
       objectReference: {fileID: 0}
     - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1086660581874059498}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 505778220}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenPhone
       objectReference: {fileID: 0}
     - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Disable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Reels.PhoneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Reels.RaisePhoneButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725656322466237932, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6173133424749374780, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
       propertyPath: m_text
