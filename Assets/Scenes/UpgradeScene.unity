@@ -3125,7 +3125,7 @@ PrefabInstance:
       objectReference: {fileID: 517666048}
     - target: {fileID: 2400409519345569255, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: wordsTypedUpgradeAmount
-      value: 1.25
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 2400409519345569255, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: energyRegenUpgradeAmount
