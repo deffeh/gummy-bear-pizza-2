@@ -24,6 +24,8 @@ namespace Phone
         [SerializeField] private Button lowerButton;
         [SerializeField] private InactiveScreen inactiveScreen;
         [SerializeField] private GameObject _hand;
+        [SerializeField] private Image statusBar;
+        [SerializeField] private TMP_Text statusBarTimeText;
 
         private bool _isSwiped = false;
         private bool _isActive = false;
@@ -60,6 +62,15 @@ namespace Phone
                 raiseButton.interactable = true;
                 ClosePhone();
             });
+            
+            statusBar.enabled = false;
+            statusBarTimeText.enabled = false;
+        }
+        
+        public void Update()
+        {
+            string time = GameManager.Instance.GetTime();
+            if (statusBarTimeText) statusBarTimeText.text = time + " PM";
         }
 
         public bool IsActive()
@@ -79,6 +90,9 @@ namespace Phone
             _isActive = true;
             
             inactiveScreen.Hide();
+            
+            statusBar.enabled = true;
+            statusBarTimeText.enabled = true;
         }
 
         public void ClosePhone()
@@ -90,6 +104,9 @@ namespace Phone
             phoneRect.DOAnchorPos(_originalPosition, animationDuration).SetEase(Ease.OutCubic);
             
             ClearAllReels();
+            
+            statusBar.enabled = false;
+            statusBarTimeText.enabled = false;
         }
 
         public void Swipe()

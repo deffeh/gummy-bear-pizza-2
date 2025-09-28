@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoadingScreen : MonoBehaviour
 {
     public static LoadingScreen Instance;
+    public PetType petType;
     [SerializeField] private TMP_Text _title;
     [SerializeField] private TMP_Text _body;
     [SerializeField] private CanvasGroup _textCanvasGroup;

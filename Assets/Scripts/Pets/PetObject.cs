@@ -2,7 +2,10 @@ using UnityEngine;
 
 public enum PetType
 {
-    Penguin
+    Penguin,
+    Cat,
+    Cow,
+    Longhorn
 }
 
 [CreateAssetMenu(fileName = "Pet", menuName = "ScriptableObjects/Pets", order = 1)]
