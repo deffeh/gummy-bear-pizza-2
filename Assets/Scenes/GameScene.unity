@@ -598,7 +598,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 5fbf183afa0e2364fa0d4a93f23b1763, type: 3}
   - {fileID: 4900000, guid: eb97c871571a6f94cbf46d01aee4b8e5, type: 3}
   _critChance: 0.05
-  _baseBubbleRate: 1.75
+  _baseBubbleRate: 1
 --- !u!114 &279055104
 MonoBehaviour:
   m_ObjectHideFlags: 0
