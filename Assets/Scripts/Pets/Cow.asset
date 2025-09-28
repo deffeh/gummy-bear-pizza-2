@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb9245c3174b65429fd33c89b503c34, type: 3}
+  m_Name: Cow
+  m_EditorClassIdentifier: 
+  _happyFace: {fileID: -9156393382158651019, guid: 2f07dde31fb2d8942993a547c9fc4a98, type: 3}
+  _mildFace: {fileID: -2944633425718255563, guid: 55574a8fa5cc24543a385b4e3dcba059, type: 3}
+  _sadFace: {fileID: 1180591296745468977, guid: 9bf1d4d41cde2d74b97492707ca2e45b, type: 3}
+  petType: 2

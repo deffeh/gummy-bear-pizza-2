@@ -2319,7 +2319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e8806d54e125e2346bf5f69165092d09, type: 3}
+  m_Sprite: {fileID: 7797506719751953523, guid: c7f1743273c209947b820570d507c505, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4166,6 +4166,9 @@ MonoBehaviour:
   _petFace: {fileID: 1145216651}
   _pets:
   - {fileID: 11400000, guid: a48289dc13a36d94484e1b08f8f15caa, type: 2}
+  - {fileID: 11400000, guid: fdae528dc7daa0d4aa06446777d0d86e, type: 2}
+  - {fileID: 11400000, guid: 59555cb6c94aae9409ff452a2f7e9b8e, type: 2}
+  - {fileID: 11400000, guid: 01c07a0c9ff3d3040b47672101a78a0d, type: 2}
 --- !u!114 &496949883592078433
 MonoBehaviour:
   m_ObjectHideFlags: 0
