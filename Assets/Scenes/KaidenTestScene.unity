@@ -1812,10 +1812,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1230109390}
     m_Modifications:
     - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: phoneRect
-      value: 
-      objectReference: {fileID: 1086660581874059497}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: lowerButton
       value: 
       objectReference: {fileID: 402693509}
@@ -1823,93 +1819,37 @@ PrefabInstance:
       propertyPath: raiseButton
       value: 
       objectReference: {fileID: 505778221}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: _LowerButton
-      value: 
-      objectReference: {fileID: 402693509}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: _RaiseButton
-      value: 
-      objectReference: {fileID: 505778221}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: swipeCooldown
-      value: 0.3
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: raisePhoneButton
-      value: 
-      objectReference: {fileID: 505778221}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: reelPrefabs.Array.size
-      value: 1
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: 'reelPrefabs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2306409521401694118, guid: 1b67a38c587a2da44929b46a05106ed3, type: 3}
-    - target: {fileID: 2402080815234813263, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: raisePhoneButton
-      value: 
-      objectReference: {fileID: 505778221}
-    - target: {fileID: 5788218597015775426, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Name
-      value: ActiveReel
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 294
+      value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 639
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6200210626637384803, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288999366669423244, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288999366669423244, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288999366669423244, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6288999366669423244, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.52
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1959,36 +1899,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7855642138667519783, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7880484533655293162, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: m_Name
       value: Phone
       objectReference: {fileID: 0}
-    - target: {fileID: 8122436234331462864, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122436234331462864, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8122436234331462864, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9152398948083949811, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1610
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2402080815234813263, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-    - {fileID: 7196140936140981624, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 8744770883866739794, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-    - {fileID: 5788218597015775426, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
