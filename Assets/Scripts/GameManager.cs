@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CanvasGroup _firstONe;
     [SerializeField] private CanvasGroup _secondONe;
     [SerializeField] private CanvasGroup _thirdONe;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _gong;
+    [SerializeField] private AudioClip _timpani;
+
 
     private float _baseTime;
     public int WordsToWin = 1000;
@@ -130,10 +134,13 @@ public class GameManager : MonoBehaviour
         var seq = DOTween.Sequence();
         seq.AppendInterval(1f);
         seq.Append(_firstONe.GetComponent<RectTransform>().DOScale(8f, 2.5f));
+        seq.JoinCallback(() => _audioSource.PlayOneShot(_timpani));
         seq.Join(_firstONe.DOFade(0f, 1f).SetDelay(1.5f));
         seq.Append(_secondONe.GetComponent<RectTransform>().DOScale(4f, 2.5f));
+        seq.JoinCallback(() => _audioSource.PlayOneShot(_timpani));
         seq.Join(_secondONe.DOFade(0f, 1f).SetDelay(1.5f));
         seq.Append(_thirdONe.GetComponent<RectTransform>().DOScale(1f, 1f));
+        seq.JoinCallback(() => _audioSource.PlayOneShot(_gong));
         seq.Join(_thirdONe.DOFade(1f, 0.5f));
         seq.OnComplete(() =>
         {

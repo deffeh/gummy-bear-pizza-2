@@ -64,11 +64,12 @@ public class DocumentPage : MonoBehaviour
             while (curEssay.Length < curLerp)
             {
                 changed = true;
-                curEssay.Append(goalEssay[curEssay.Length]);
-                if (goalEssay[curEssay.Length].Equals(' ') && cooldown <= 0)
+                char charmander = goalEssay[curEssay.Length];
+                curEssay.Append(charmander);
+                if (charmander.Equals(' ') && cooldown <= 0)
                 {
                     cooldown = .03f;
-                    Source.PlayOneShot( Clips[Random.Range(0, 4)]);
+                    Source.PlayOneShot( Clips[Random.Range(0, Clips.Length)]);
                 }
             }
 
