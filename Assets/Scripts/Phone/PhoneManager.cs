@@ -135,6 +135,9 @@ namespace Phone
             
             // Add time to timer
             GameManager.Instance._gameTimer -= Reel.timeLostPerReel;
+            
+            // Activate reel effect
+            _reelQueue.Peek()?.OnActivate();
         }
 
         private IEnumerator SwipeCooldownRoutine()
