@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PhoneManager.Instance == null || PhoneManager.Instance.IsActive()) { return; }
+        if ((PhoneManager.Instance == null && PhoneManager.Instance.IsActive()) || GameManager.Instance.RoundOver) { return; }
         UpdateEnergy(- DrainRate * Time.deltaTime);
     }
 

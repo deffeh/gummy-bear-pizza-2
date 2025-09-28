@@ -6,8 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    [SerializeField] private TMP_Text _timeText;
-    [SerializeField] private TMP_Text _roundText;
     [SerializeField] private TMP_Text _wordCount;
     [SerializeField] private RectTransform _finishedText;
     [SerializeField] private TMP_Text _stickyNoteText;
@@ -33,7 +31,6 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         _baseTime = _gameTimer;
-        _roundText.text = $"Round: {_round + 1}";
     }
 
     private void Start()
@@ -43,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (RoundOver) { return; }
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -51,9 +49,7 @@ public class GameManager : MonoBehaviour
         }
         #endif
 
-            if (RoundOver) { return; }
         _gameTimer -= Time.deltaTime;
-        UpdateTimeUI();
         if (_gameTimer <= 0)
         {
             EndGame(false);
@@ -63,7 +59,7 @@ public class GameManager : MonoBehaviour
         if (lerpWC != totalWC)
         {
             lerpWC = Mathf.MoveTowards(lerpWC, totalWC, Time.deltaTime * _wordCountLerpSpeed);
-            _wordCount.text = $"WC: {(int)lerpWC}";
+            _wordCount.text = $"{(int)lerpWC}";
         }
     }
 
@@ -108,17 +104,12 @@ public class GameManager : MonoBehaviour
         RoundOver = false;
     }
 
-    private void UpdateTimeUI()
+    public string GetTime()
     {
         TimeSpan baseTime = new TimeSpan(hours: 9, minutes: 0, seconds: 0);
         TimeSpan timeSpent = TimeSpan.FromMinutes(Mathf.Clamp(_baseTime - _gameTimer, 0, _baseTime));
         TimeSpan totalTime = baseTime + timeSpent;
-        _timeText.text = $"{totalTime.ToString(@"h\:mm")}";
-    }
-
-    public string GetTime()
-    {
-        return _timeText.text;
+        return $"{totalTime.ToString(@"h\:mm")}";
     }
 
 }
