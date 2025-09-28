@@ -9,6 +9,11 @@ namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
+        public AudioClip PickUp;
+        public AudioClip PutDown;
+        public AudioClip Click;
+        public AudioSource Source;
+        
         public TextMeshProUGUI TextPrefab;
         public static PhoneManager Instance;
         [SerializeField] private RectTransform phoneRect;        
@@ -93,6 +98,8 @@ namespace Phone
             
             statusBar.enabled = true;
             statusBarTimeText.enabled = true;
+            Source.clip = PickUp;
+            Source.Play();
         }
 
         public void ClosePhone()
@@ -107,6 +114,8 @@ namespace Phone
             
             statusBar.enabled = false;
             statusBarTimeText.enabled = false;
+            Source.clip = PutDown;
+            Source.Play();
         }
 
         public void Swipe()
@@ -158,6 +167,8 @@ namespace Phone
             
             // Activate reel effect
             _reelQueue.Peek()?.OnActivate();
+            Source.clip = Click;
+            Source.Play();
         }
 
         private IEnumerator SwipeCooldownRoutine()
