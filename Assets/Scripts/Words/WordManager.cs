@@ -36,6 +36,7 @@ public class WordManager : MonoBehaviour
 
     public void Init(int round)
     {
+        ResetRewardMultiplier();
         //based off round and stats, set bubble rate, duration, damage here?
         _round = round;
         _bubbleRate = Random.Range(0.25f, 0.75f);
