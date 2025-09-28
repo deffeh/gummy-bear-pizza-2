@@ -2812,6 +2812,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 517666048}
     - target: {fileID: 2546297299560979984, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546297299560979984, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: upgradeName
       value: Increased Energy Gained Per Reel
       objectReference: {fileID: 0}
@@ -3091,6 +3095,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6137081986418951038, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 6498427551481096978, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3247,6 +3255,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7445814989511345607, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7516683322123972011, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3347,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8299405620964161649, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8406748460255290864, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3371,6 +3387,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8566172970998470363, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8783547658921688759, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3394,6 +3414,10 @@ PrefabInstance:
     - target: {fileID: 8783547658921688759, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912205639988743580, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeCost
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8933069469894855790, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y

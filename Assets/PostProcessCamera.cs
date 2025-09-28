@@ -39,7 +39,6 @@ public class PostProcessCamera : MonoBehaviour
     public static void SetBlur(float blur)
     {
         blur = 1 - blur;
-        print(blur);
         if(!Instance) return;
         Instance.blurStrength = blur;
     }

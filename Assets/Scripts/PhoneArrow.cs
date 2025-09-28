@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PhoneArrow : MonoBehaviour
 {
     [SerializeField] private RectTransform _rectTrans;
-    [SerializeField] private Image _image;
+    [SerializeField] private CanvasGroup _canGrp;
     void Start()
     {
         int round = PlayerManager.Instance.round;
@@ -25,6 +25,6 @@ public class PhoneArrow : MonoBehaviour
     {
         if (!PlayerManager.Instance || !PhoneManager.Instance) { return; }
         float hp = PlayerManager.Instance.GetCurHPPercent();
-        _image.enabled = hp < 0.4f && !PhoneManager.Instance.IsActive();
+        _canGrp.alpha = hp < 0.4f && !PhoneManager.Instance.IsActive() ? 1 : 0;
     }
 }

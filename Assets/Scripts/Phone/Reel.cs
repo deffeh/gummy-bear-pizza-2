@@ -6,7 +6,7 @@ namespace Phone
     public abstract class Reel : MonoBehaviour
     {
         [SerializeField] private Texture2D[] textures;
-        [SerializeField] public static int timeLostPerReel = 5;
+        [SerializeField] public static int timeLostPerReel = 3;
         public void Initialize()
         {
             if (textures.Length <= 0) return;
