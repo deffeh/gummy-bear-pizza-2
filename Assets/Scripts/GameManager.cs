@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using Math = Unity.Mathematics.Geometry.Math;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,8 +59,8 @@ public class GameManager : MonoBehaviour
         int totalWC = DocumentPage.Instance.totalWordCount;
         if (lerpWC != totalWC)
         {
-            lerpWC = Mathf.MoveTowards(lerpWC, totalWC, Time.deltaTime * _wordCountLerpSpeed);
-            _wordCount.text = $"{(int)lerpWC}";
+            lerpWC = Mathf.Lerp(lerpWC, totalWC, Time.deltaTime * _wordCountLerpSpeed);
+            _wordCount.text = $"{(int)Mathf.Ceil(lerpWC)}";
         }
     }
 
