@@ -615,16 +615,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343085404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1134866690}
+  m_Father: {fileID: 1346665247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.5802, y: 89.39484}
+  m_AnchoredPosition: {x: -19.5802, y: 72.8949}
   m_SizeDelta: {x: 1281.3363, y: 795.7936}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343085406
@@ -1825,7 +1825,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 343085405}
   - {fileID: 421354087}
   - {fileID: 1004184353}
   m_Father: {fileID: 1346665247}
@@ -2509,6 +2508,7 @@ RectTransform:
   - {fileID: 1236511355}
   - {fileID: 1847422073}
   - {fileID: 1162118167}
+  - {fileID: 343085405}
   - {fileID: 513466616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3225,13 +3225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c2c10b83708e045b32dda93ade5302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeText: {fileID: 237297416593078822}
-  _roundText: {fileID: 8058139063197139853}
   _wordCount: {fileID: 3836455257750527220}
   _finishedText: {fileID: 6934998803739263096}
   _stickyNoteText: {fileID: 1438979133}
   _gameTimer: 180
   _wordCountLerpSpeed: 70
+  _round: 0
   WordsToWin: 1000
   RoundOver: 0
 --- !u!1 &1043904408366777687
