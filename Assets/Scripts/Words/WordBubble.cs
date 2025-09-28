@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Phone;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class WordBubble : MonoBehaviour
     [SerializeField] private float _critChance;
     [SerializeField] private float _fatigueAmount = 10f;
     [SerializeField] private RectTransform _rectTrans;
+    [SerializeField] private PhoneManager _phoneManager;
 
     private int _curWordIndex;
     private bool _completed;
@@ -74,7 +76,7 @@ public class WordBubble : MonoBehaviour
 
     private void HandleInput(string input)
     {
-        if (input == null || input.Length == 0) { return; }
+        if (input == null || input.Length == 0 || PhoneManager.Instance.IsActive()) { return; }
         int len = input.Length;
         if (_word.Substring(_curWordIndex, len) == input)
         {
