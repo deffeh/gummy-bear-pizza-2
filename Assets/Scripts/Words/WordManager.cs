@@ -50,7 +50,18 @@ public class WordManager : MonoBehaviour
         _bubbleRate -= Time.deltaTime;
         if (_bubbleRate <= 0)
         {
-            _bubbleRate = _baseBubbleRate;
+            float ratio = PlayerManager.Instance.GetCurHPPercent();
+            float rateMultiplier = 1f;
+            if (ratio < 0.33f)
+            {
+                rateMultiplier = 1.6f;
+            }
+            else if (ratio < 0.66f)
+            {
+                rateMultiplier = 1.25f;
+            }
+            
+            _bubbleRate = _baseBubbleRate * rateMultiplier;
             InstantiateBubble();
         }
 
@@ -65,11 +76,21 @@ public class WordManager : MonoBehaviour
     public void InstantiateBubble()
     {
         float multiplier = GetDurationMultiplierForRound(_round);
-        var dur = Mathf.Max(_bubbleDuration * multiplier, 1f);
-        WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
+        float tiredMultiplier = 1f;
+        float playerTired = PlayerManager.Instance.GetCurHPPercent();
+        if (playerTired < 0.33f)
+        {
+            tiredMultiplier = 0.4f;
+        }
+        else if (playerTired < 0.66f)
+        {
+            tiredMultiplier = 0.7f;
+        }
+        var dur = Mathf.Max(_bubbleDuration * multiplier * tiredMultiplier, 1f);
         bool isNegative = Random.Range(0, 2) == 0;
         int slightRandomRewardWords = (isNegative ? -1 : 1) * Random.Range(0, _rewardWordsPerBubble / 8);
         
+        WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
         bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, (_rewardWordsPerBubble + slightRandomRewardWords) * _rewardMultiplier, _critChance);
         PlaceBubbleRandomly(bubbleFab);
     }
