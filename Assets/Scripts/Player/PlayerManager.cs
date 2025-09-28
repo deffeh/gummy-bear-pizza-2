@@ -1,3 +1,4 @@
+using Phone;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PhoneManager.Instance == null || PhoneManager.Instance.IsActive()) { return; }
         UpdateEnergy(- DrainRate * Time.deltaTime);
     }
 
