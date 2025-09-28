@@ -8,6 +8,7 @@ namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
+        public static PhoneManager Instance;
         [SerializeField] private RectTransform phoneRect;        
         [SerializeField] private RectTransform screen;           
 
@@ -28,6 +29,16 @@ namespace Phone
 
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             if (phoneRect == null)
                 phoneRect = GetComponent<RectTransform>();
             

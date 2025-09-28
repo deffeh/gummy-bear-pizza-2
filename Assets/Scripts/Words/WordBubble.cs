@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Phone;
 using TMPro;
 using UnityEngine;
 
@@ -74,7 +75,7 @@ public class WordBubble : MonoBehaviour
 
     private void HandleInput(string input)
     {
-        if (input == null || input.Length == 0) { return; }
+        if (input == null || input.Length == 0 || PhoneManager.Instance.IsActive()) { return; }
         int len = input.Length;
         if (_word.Substring(_curWordIndex, len) == input)
         {
