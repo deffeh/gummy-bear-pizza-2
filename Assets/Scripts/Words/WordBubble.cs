@@ -21,7 +21,7 @@ public class WordBubble : MonoBehaviour
 
     public void Init(string word, float lifetime, int rewardAmount)
     {
-        _word = word;
+        _word = word.Trim();
         if (word.Length > 3) { ResizeBubble(word.Length); }
         _lifetime = lifetime;
         _curWordIndex = 0;
