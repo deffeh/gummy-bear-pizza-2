@@ -21,7 +21,7 @@ public class EnergyBar : MonoBehaviour
 
     public void InstantSetHP(float hp)
     {
-        _lerpSpeed = hp;
+        _lerpVal = hp;
         _targetVal = hp;
         BarMat.SetFloat(percentId, hp);
         BarImage.color = gradient.Evaluate(_targetVal);
