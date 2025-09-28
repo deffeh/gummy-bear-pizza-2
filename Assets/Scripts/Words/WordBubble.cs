@@ -5,6 +5,7 @@ using UnityEngine;
 public class WordBubble : MonoBehaviour
 {
     public RectTransform TextExplosion;
+    public RectTransform CritExplosion;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private float _lifetime = 1f;
     [SerializeField] private string _word;
@@ -100,11 +101,17 @@ public class WordBubble : MonoBehaviour
     {
         _completed = true;
         float attemptCrit = Random.Range(0f, 1f);
-        
-        DocumentPage.Instance?.AddWords(attemptCrit < _critChance ? _rewardAmount * 2 : _rewardAmount);
+        bool didCrit = attemptCrit < _critChance;
+        DocumentPage.Instance?.AddWords(didCrit ? _rewardAmount * 2 : _rewardAmount);
         PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
-        RectTransform explosion = Instantiate(TextExplosion, transform.parent);
-        explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        if (!didCrit){
+            RectTransform explosion = Instantiate(TextExplosion, transform.parent);
+            explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        }
+        else{
+            RectTransform explosion = Instantiate(CritExplosion, transform.parent);
+            explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        }
         _seq.Kill();
         Destroy(gameObject);
     }
