@@ -17,7 +17,12 @@ Shader "Hidden/EnergyBar"
         ZWrite Off Cull Off
         Blend SrcAlpha OneMinusSrcAlpha
         BlendOp Add
-
+        Stencil
+        {
+            Ref 1
+            Comp Equal
+            Pass Keep
+        }
         Pass
         {
             CGPROGRAM
