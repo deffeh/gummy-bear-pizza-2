@@ -45,8 +45,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Blur: 2.09
+    - _BlurStrength: 1
     - _EnableExternalAlpha: 0
     - _Percent: 1
+    - _Radius: 4
+    - _Sigma: 2.5
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

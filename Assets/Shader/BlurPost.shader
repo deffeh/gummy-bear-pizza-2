@@ -4,6 +4,8 @@ Shader "Hidden/BlurPost"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _Blur ("Blur Strength", float) = .1
+        _Radius ("Blur Radius", int) = 1
+        _Sigma ("Sigma", float) = 1
     }
     SubShader
     {
@@ -40,19 +42,26 @@ Shader "Hidden/BlurPost"
 
             sampler2D _MainTex;
             float _Blur;
+            int _Radius;
+            float _Sigma;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = 0;
-                for(float k = -1.; k < 1.; k++)
+                int samples = 0;
+                for(float k = -_Radius; k < _Radius; k++)
                 {
-                    for(float j = -1.; j < 1.; j++)
+                    for(float j = -_Radius; j < _Radius; j++)
                     {
-                        tex2D(_MainTex, i.uv + float2(k,j) * _Blur);
+                        col += tex2D(_MainTex, i.uv + float2(k,j) * _Blur * .001) ;
+                        samples++;
                     }
                 }
+                col /= samples;
+                i.uv -= .5;
+                col.rgb *= lerp(1., 1 - dot(i.uv, i.uv) - .2, _Blur*2);
                 // just invert the colors
-                col.rgb = 1 - col.rgb;
+                // col.rgb = 1 - col.rgb;
                 return col;
             }
             ENDCG

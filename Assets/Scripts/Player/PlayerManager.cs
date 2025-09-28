@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         curFatigue = Mathf.Clamp(curFatigue, 0, MaxFatigue);
         float hp = curFatigue / MaxFatigue;
         Bar.SetHP(hp);
+        PostProcessCamera.SetBlur(hp);
     }
 
     public void InstantSetHPToMax()
