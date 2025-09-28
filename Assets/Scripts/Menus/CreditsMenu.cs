@@ -18,14 +18,9 @@ public class CreditsMenu : MonoBehaviour
 
     public void OnGoBackClicked()
     {
-        print("Moving to main");
         if (mainMenuScene.Length > 0)
         {
             SceneManager.LoadScene(mainMenuScene);
-        }
-        else
-        {
-            print("No scene dummy");
         }
     }
 }

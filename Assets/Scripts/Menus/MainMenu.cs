@@ -65,20 +65,14 @@ public class MainMenu : MonoBehaviour
 
     private void goCredits()
     {
-        print("Go to da credits");
         if (creditsScene.Length > 0)
         {
             SceneManager.LoadScene(creditsScene);
-        }
-        else
-        {
-            print("No scene dummy");
         }
     }
 
     public void OnPetsCustomButtonClicked()
     {
-        print("Change ur pet");
         petMenu.SetActive(true);
     }
 
@@ -86,7 +80,6 @@ public class MainMenu : MonoBehaviour
     {
 
         PetType petType = (PetType)Enum.Parse(typeof(PetType), petName);
-        print("Setting to " + petType);
         GameObject loadingScreenObject = GameObject.Find("LoadingScreenCanvas");
         LoadingScreen loadingScreen = loadingScreenObject.GetComponent<LoadingScreen>();
         loadingScreen.petType = petType;

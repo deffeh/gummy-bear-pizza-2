@@ -15,7 +15,6 @@ public class PetCircle : MonoBehaviour
         GameObject loadingScreenObject = GameObject.Find("LoadingScreenCanvas");
         LoadingScreen loadingScreen = loadingScreenObject.GetComponent<LoadingScreen>();
         _savedType = loadingScreen.petType;
-        print(_savedType);
         //get enum eventually
         foreach (PetObject pet in _pets)
         {

@@ -55,11 +55,11 @@ public class WordManager : MonoBehaviour
             float rateMultiplier = 1f;
             if (ratio < 0.33f)
             {
-                rateMultiplier = 1.6f;
+                rateMultiplier = 1.85f;
             }
             else if (ratio < 0.66f)
             {
-                rateMultiplier = 1.25f;
+                rateMultiplier = 1.35f;
             }
             
             _bubbleRate = _baseBubbleRate * rateMultiplier;
@@ -83,12 +83,12 @@ public class WordManager : MonoBehaviour
         if (playerTired < 0.33f)
         {
             tiredMultiplier = 0.4f;
-            tiredRewardMulti = 0.75f;
+            tiredRewardMulti = 0.5f;
         }
         else if (playerTired < 0.66f)
         {
             tiredMultiplier = 0.7f;
-            tiredRewardMulti = 0.9f;
+            tiredRewardMulti = 0.8f;
         }
         var dur = Mathf.Max(_bubbleDuration * multiplier * tiredMultiplier, 1f);
         bool isNegative = Random.Range(0, 2) == 0;

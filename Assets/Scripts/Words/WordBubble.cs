@@ -42,8 +42,9 @@ public class WordBubble : MonoBehaviour
         ResetWord();
         _rectTrans.localScale = Vector2.zero;
         _seq = DOTween.Sequence().SetEase(Ease.InOutQuad);
-        _seq.Append(_rectTrans.DOScale(1.1f, lifetime / 8f));
-        _seq.Append(_rectTrans.DOScale(1f, lifetime / 8f));
+        float popinDur = Mathf.Min(1f, lifetime / 8f);
+        _seq.Append(_rectTrans.DOScale(1.1f, popinDur));
+        _seq.Append(_rectTrans.DOScale(1f, popinDur));
         _seq.Play();
     }
 

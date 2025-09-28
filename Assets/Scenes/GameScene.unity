@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wordBubblePrefab: {fileID: 6725540151471036773, guid: 04f44891495e9dc4dbb6512e40512225, type: 3}
   _bubbleDuration: 5
-  _bubbleRate: 1.75
+  _bubbleRate: 1
   _rewardWordsPerBubble: 25
   _textFiles:
   - {fileID: 4900000, guid: 6bd2aaf336c711d47922b0db50761d1a, type: 3}
