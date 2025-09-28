@@ -11,6 +11,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private TMP_Text _body;
     [SerializeField] private CanvasGroup _textCanvasGroup;
     [SerializeField] private CanvasGroup _canvasGrp;
+    private bool _loading = false;
     private void Awake()
     {
         if (Instance != null)
@@ -32,6 +33,7 @@ public class LoadingScreen : MonoBehaviour
 
     private void Hide(Scene arg0, LoadSceneMode arg1)
     {
+        _loading = false;
         var seq = DOTween.Sequence();
         seq.Append(_canvasGrp.DOFade(0f, 1f));
         seq.Play();
@@ -39,6 +41,8 @@ public class LoadingScreen : MonoBehaviour
 
     public void LoadScene(string sceneName, string title, string body, float holdDuration)
     {
+        if (_loading) { return; }
+        _loading = true;
         _canvasGrp.alpha = 0f;
         _textCanvasGroup.alpha = 0f;
         var seq = DOTween.Sequence();

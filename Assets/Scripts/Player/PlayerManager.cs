@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         if ((PhoneManager.Instance == null && PhoneManager.Instance.IsActive()) || GameManager.Instance.RoundOver) { return; }
-        UpdateEnergy(- DrainRate * Time.deltaTime);
+        UpdateEnergy(-DrainRate * Time.deltaTime);
     }
 
     public void UpdateEnergy(float change)
@@ -44,5 +44,10 @@ public class PlayerManager : MonoBehaviour
         curFatigue = Mathf.Clamp(curFatigue, 0, MaxFatigue);
         float hp = curFatigue / MaxFatigue;
         Bar.SetHP(hp);
+    }
+
+    public float GetCurHPPercent()
+    {
+        return curFatigue / MaxFatigue;
     }
 }
