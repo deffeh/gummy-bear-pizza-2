@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(bool win)
     {
+        if (RoundOver) { return; }
         //stop everything
         RoundOver = true;
 
@@ -80,6 +81,8 @@ public class GameManager : MonoBehaviour
             SetWC(WordsToWin);
             _finishedText.localScale = Vector2.zero;
             _finishedText.gameObject.SetActive(true);
+            PlayerManager.Instance.maxTime = TimeSpan.FromMinutes(_baseTime);
+            PlayerManager.Instance.remainingTime = TimeSpan.FromMinutes(_gameTimer);
             var seq = DOTween.Sequence();
             seq.Append(_finishedText.DOScale(1.5f, 0.3f));
             seq.Append(_finishedText.DOScale(1f, 1f));

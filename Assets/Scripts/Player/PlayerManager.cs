@@ -1,3 +1,4 @@
+using System;
 using Phone;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
@@ -18,6 +19,11 @@ public class PlayerManager : MonoBehaviour
     public int energyRegenLevel = 1;
     public int wordsTypedLevel = 1;
     public int lessTimeLossLevel = 1;
+
+    //for calculating rank in upgrade scene
+    public TimeSpan remainingTime;
+    public TimeSpan maxTime;
+
     void Awake()
     {
         if (Instance == null)
