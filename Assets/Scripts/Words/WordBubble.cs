@@ -20,6 +20,9 @@ public class WordBubble : MonoBehaviour
     private bool _completed;
     private float _lifeTimeBase;
     private Sequence _seq;
+    private const string TYPED_HEX = "000000";
+    private const string UNTYPED_HEX = "000000A0";
+
 
     public void Start()
     {
@@ -83,14 +86,14 @@ public class WordBubble : MonoBehaviour
             _curWordIndex += len;
             if (_curWordIndex >= _word.Length)
             {
-                _text.text = WrapStringInColor(_text.text, "000000");
+                _text.text = WrapStringInColor(_text.text, TYPED_HEX);
                 OnComplete();
             }
             else
             {
                 string typed = _word.Substring(0, _curWordIndex);
                 string untyped = _word.Substring(_curWordIndex);
-                _text.text = WrapStringInColor(typed, "000000") + WrapStringInColor(untyped, "00000080");
+                _text.text = WrapStringInColor(typed, TYPED_HEX) + WrapStringInColor(untyped, UNTYPED_HEX);
             }
         }
         else
@@ -121,7 +124,7 @@ public class WordBubble : MonoBehaviour
     private void ResetWord()
     {
         _curWordIndex = 0;
-        _text.text = WrapStringInColor(_word, "00000080");
+        _text.text = WrapStringInColor(_word, UNTYPED_HEX);
     }
 
     private string WrapStringInColor(string str, string colorHex)
