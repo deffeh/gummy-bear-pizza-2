@@ -16,7 +16,7 @@ public class WordManager : MonoBehaviour
     private int _round;
     public float _baseBubbleRate;
 
-    private int _rewardMultiplier = 1;
+    public int _rewardMultiplier = 1;
     private float _multiplierDuration = 0.0f;
 
     private void Awake()
@@ -95,7 +95,7 @@ public class WordManager : MonoBehaviour
         int slightRandomRewardWords = (isNegative ? -1 : 1) * Random.Range(0, _rewardWordsPerBubble / 8);
         
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, Mathf.CeilToInt((_rewardWordsPerBubble + slightRandomRewardWords) * tiredRewardMulti * _rewardMultiplier), _critChance);
+        bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, Mathf.CeilToInt((_rewardWordsPerBubble + slightRandomRewardWords) * tiredRewardMulti), _critChance);
         PlaceBubbleRandomly(bubbleFab);
     }
 
