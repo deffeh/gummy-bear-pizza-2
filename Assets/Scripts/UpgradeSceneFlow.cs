@@ -67,15 +67,15 @@ public class UpgradeSceneFlow : MonoBehaviour
     private string GetRank(TimeSpan timeTaken, TimeSpan maxTime)
     {
         double ratio = timeTaken.TotalMinutes / maxTime.TotalMinutes;
-        if (ratio > 0.6f)
+        if (ratio > 0.45f)
         {
             return "A";
         }
-        else if (ratio > 0.4f)
+        else if (ratio > 0.3f)
         {
             return "B";
         }
-        else if (ratio > 0.2f)
+        else if (ratio > 0.1f)
         {
             return "C";
         }

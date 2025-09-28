@@ -8,7 +8,7 @@ public class WordManager : MonoBehaviour
     public static WordManager Instance;
     [SerializeField] private WordBubble _wordBubblePrefab;
     [SerializeField] public float _bubbleDuration;
-    [SerializeField] public float _bubbleRate;
+    public float _bubbleRate;
     [SerializeField] public int _rewardWordsPerBubble;
     [SerializeField] private List<TextAsset> _textFiles;
     [SerializeField] public float _critChance = 0.05f;
@@ -32,7 +32,6 @@ public class WordManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         LoadAllWords();
-        _baseBubbleRate = _bubbleRate;
     }
 
     public void Init(int round)
@@ -189,7 +188,7 @@ public class WordManager : MonoBehaviour
     public void GainRewardMultiplier()
     {
         _rewardMultiplier++; // change this to read from upgrades if we have an upgrade that modifies the multiplier
-        _multiplierDuration = 15.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
+        _multiplierDuration = 10.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
         CritMeter.SetMultMeter(_rewardMultiplier, _multiplierDuration);
     }
 
