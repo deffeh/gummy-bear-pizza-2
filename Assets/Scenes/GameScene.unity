@@ -4789,7 +4789,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.69
+  m_Volume: 0.47
   m_Pitch: 0.88
   Loop: 0
   Mute: 0
