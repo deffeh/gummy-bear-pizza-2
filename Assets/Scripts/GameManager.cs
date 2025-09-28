@@ -91,7 +91,12 @@ public class GameManager : MonoBehaviour
         TimeSpan baseTime = new TimeSpan(hours: 9, minutes: 0, seconds: 0);
         TimeSpan timeSpent = TimeSpan.FromMinutes(Mathf.Clamp(_baseTime - _gameTimer, 0, _baseTime));
         TimeSpan totalTime = baseTime + timeSpent;
-        _timeText.text = $"Time: {totalTime.ToString(@"h\:mm")}";
+        _timeText.text = $"{totalTime.ToString(@"h\:mm")}";
+    }
+
+    public string GetTime()
+    {
+        return _timeText.text;
     }
 
 }

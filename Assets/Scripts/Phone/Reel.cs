@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Reels
+namespace Phone
 {
     public abstract class Reel : MonoBehaviour
     {
