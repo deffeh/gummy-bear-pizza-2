@@ -90,6 +90,7 @@ MonoBehaviour:
   _critChance: 0
   _fatigueAmount: 10
   _rectTrans: {fileID: 2968663766717482017}
+  _phoneManager: {fileID: 0}
 --- !u!222 &1773068889418072778
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -165,8 +166,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: asd
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
+  m_sharedMaterial: {fileID: 4083354836547638238, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -190,7 +191,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 30.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

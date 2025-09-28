@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using TMPro;
 public class DocumentPage : MonoBehaviour
 {
+    private float cooldown = .1f;
+    public AudioClip[] Clips;
+    public AudioSource Source;
     public static DocumentPage Instance;
     public Page PagePrefab;
     public bool debug = false;
@@ -44,6 +47,7 @@ public class DocumentPage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cooldown -= Time.deltaTime;
         if (debug)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -61,6 +65,11 @@ public class DocumentPage : MonoBehaviour
             {
                 changed = true;
                 curEssay.Append(goalEssay[curEssay.Length]);
+                if (goalEssay[curEssay.Length].Equals(' ') && cooldown <= 0)
+                {
+                    cooldown = .03f;
+                    Source.PlayOneShot( Clips[Random.Range(0, 4)]);
+                }
             }
 
             if (changed)
