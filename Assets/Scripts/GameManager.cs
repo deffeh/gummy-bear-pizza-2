@@ -1,6 +1,6 @@
 using System;
+using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _timeText;
     [SerializeField] private TMP_Text _roundText;
     [SerializeField] private TMP_Text _wordCount;
+    [SerializeField] private RectTransform _finishedText;
     [SerializeField] private float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
-    private bool _tick = true;
-    private int _round;
+    private int _round = 0;
     private float _baseTime;
     public int WordsToWin = 1000;
-    public bool RoundOver = false;
+    public bool RoundOver = true;
     private float lerpWC = 0;
 
     private void Awake()
@@ -33,23 +33,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _baseTime = _gameTimer;
         _roundText.text = $"Round: {_round + 1}";
-        Application.targetFrameRate = 60;
+    }
+
+    private void Start()
+    {
+        InitializeRound();
     }
 
     private void Update()
     {
         if (RoundOver) { return; }
-
-        if (_tick)
+        _gameTimer -= Time.deltaTime;
+        UpdateTimeUI();
+        if (_gameTimer <= 0)
         {
-            //time
-            _gameTimer -= Time.deltaTime;
-            UpdateTimeUI();
-            if (_gameTimer <= 0)
-            {
-                _tick = false;
-                EndGame(false);
-            }
+            EndGame(false);
         }
 
         int totalWC = DocumentPage.Instance.totalWordCount;
@@ -69,21 +67,35 @@ public class GameManager : MonoBehaviour
         if (win)
         {
             _wordCount.text = $"WC: {WordsToWin}";
-            //show result screen and upgrade screen?
+            _finishedText.localScale = Vector2.zero;
+            _finishedText.gameObject.SetActive(true);
+            var seq = DOTween.Sequence();
+            seq.Append(_finishedText.DOScale(1.5f, 0.3f));
+            seq.Append(_finishedText.DOScale(1f, 1f));
+            seq.AppendInterval(3f);
+            seq.AppendCallback(() =>
+            {
+                _finishedText.gameObject.SetActive(false);
+                //go to result screen
+                LoadingScreen.Instance.LoadScene("ResultScreen", "", "", 0);
+            });
+            seq.Play();
         }
         else
         {
             //go to main menu?
+            _round = 0;
+            LoadingScreen.Instance.LoadScene("MainMenu", "", "", 0);
         }
     }
 
-    private void StartNextRound()
+    public void InitializeRound()
     {
-        RoundOver = false;
         _round++;
-        WordManager.Instance.Init();
+        WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
+        //start intro cutscene?
         _gameTimer = _baseTime;
-        _tick = true;
+        RoundOver = false;
     }
 
     private void UpdateTimeUI()

@@ -8,9 +8,10 @@ namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
+        public static PhoneManager Instance;
         [SerializeField] private RectTransform phoneRect;        
         [SerializeField] private RectTransform screen;           
-
+        // make sure the order of reel prefabs is [0]reset multiplier, [1]gain multiplier, [2]gain energy, [3]do nothing
         [SerializeField] private GameObject[] reelPrefabs;       
         [SerializeField] private float animationDuration = 1.0f;
         [SerializeField] private Vector2 activePosition;         
@@ -28,6 +29,16 @@ namespace Phone
 
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             if (phoneRect == null)
                 phoneRect = GetComponent<RectTransform>();
             
@@ -162,8 +173,18 @@ namespace Phone
                 return null;
             }
 
-            int index = Random.Range(0, reelPrefabs.Length);
-            return reelPrefabs[index];
+            // make sure the order of reel prefabs is [0]reset multiplier, [1]gain multiplier, [2]gain energy, [3]do nothing
+            return reelPrefabs[GetWeightedRandomReelIndex()];
+        }
+
+        private int GetWeightedRandomReelIndex()
+        {
+            // make sure the order of reel prefabs is [0]reset multiplier, [1]gain multiplier, [2]gain energy, [3]do nothing
+            float r = Random.value;
+            if (r < 0.05f) return 0; // 5% for reset multipier
+            if (r < 0.15) return 1; // 10% for gain multiplier
+            if (r < 0.40) return 2; // 25% for gain energy
+            return 3; // 60% for do nothing
         }
         
         private void ClearAllReels()
