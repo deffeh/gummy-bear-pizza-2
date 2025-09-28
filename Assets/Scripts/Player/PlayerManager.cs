@@ -1,3 +1,4 @@
+using System;
 using Phone;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public float DrainRate = 1;
     public float MaxFatigue = 100;
     private float curFatigue = 100;
+    public int round = 1;
     public EnergyBar Bar;
 
     public int totalMoney = 300;
@@ -17,6 +19,11 @@ public class PlayerManager : MonoBehaviour
     public int energyRegenLevel = 1;
     public int wordsTypedLevel = 1;
     public int lessTimeLossLevel = 1;
+
+    //for calculating rank in upgrade scene
+    public TimeSpan remainingTime;
+    public TimeSpan maxTime;
+
     void Awake()
     {
         if (Instance == null)
@@ -34,7 +41,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((PhoneManager.Instance == null && PhoneManager.Instance.IsActive()) || GameManager.Instance.RoundOver) { return; }
+        if (!PhoneManager.Instance || PhoneManager.Instance.IsActive() || !GameManager.Instance || GameManager.Instance.RoundOver) { return; }
         UpdateEnergy(-DrainRate * Time.deltaTime);
     }
 
@@ -44,6 +51,12 @@ public class PlayerManager : MonoBehaviour
         curFatigue = Mathf.Clamp(curFatigue, 0, MaxFatigue);
         float hp = curFatigue / MaxFatigue;
         Bar.SetHP(hp);
+    }
+
+    public void InstantSetHPToMax()
+    {
+        curFatigue = MaxFatigue;
+        Bar.InstantSetHP(MaxFatigue);
     }
 
     public float GetCurHPPercent()

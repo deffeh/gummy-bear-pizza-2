@@ -43,6 +43,8 @@ public class LoadingScreen : MonoBehaviour
     {
         if (_loading) { return; }
         _loading = true;
+        _title.text = title;
+        _body.text = body;
         _canvasGrp.alpha = 0f;
         _textCanvasGroup.alpha = 0f;
         var seq = DOTween.Sequence();
