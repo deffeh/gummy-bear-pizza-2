@@ -2,12 +2,23 @@ using Phone;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.AI;
+using UnityEditor;
 
 public class MainMenu : MonoBehaviour
 {
     public string creditsScene;
 
     public GameObject petMenu;
+
+    public AudioSource bg;
+
+    private bool fadingOut = false;
+
+    private bool changeScene = false;
+
+    private int whichScene;
+
     public void Start()
     {
         DestroyAllGameSingletons();
@@ -15,12 +26,44 @@ public class MainMenu : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
+    private void Update()
+    {
+        if (fadingOut)
+        {
+            bg.volume -= 0.5f * Time.deltaTime;
+            if (bg.volume <= 0.0f)
+            {
+                changeScene = true;
+                if (whichScene == 0)
+                {
+                    startGame();
+                }
+                else
+                {
+                    goCredits();
+                }
+            }
+        }
+    }
+
     public void OnStartButtonClicked()
+    {
+        fadingOut = true;
+        whichScene = 0;
+    }
+
+    private void startGame()
     {
         LoadingScreen.Instance.LoadNextRound(1);
     }
 
     public void OnCreditsButtonClicked()
+    {
+        fadingOut = true;
+        whichScene = 1;
+    }
+
+    private void goCredits()
     {
         print("Go to da credits");
         if (creditsScene.Length > 0)
