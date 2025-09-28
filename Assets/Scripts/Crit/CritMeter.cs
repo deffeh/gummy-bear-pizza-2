@@ -43,10 +43,10 @@ public class CritMeter : MonoBehaviour
             MultText.color = ColorGradient.Evaluate(curDuration / maxDuration);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetMeter(2, 15);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     SetMeter(2, 15);
+        // }
     }
 
     public void ResetMeter()
