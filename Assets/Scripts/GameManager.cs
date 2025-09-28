@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private TMP_Text _wordCount;
     [SerializeField] private RectTransform _finishedText;
+    [SerializeField] private RectTransform _timesUpText;
+    
     [SerializeField] private TMP_Text _stickyNoteText;
     [SerializeField] private float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
@@ -46,9 +48,15 @@ public class GameManager : MonoBehaviour
             EndGame(true);
             return;
         }
+
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            EndGame(false);
+            return;
+        }
 #endif
 
-        _gameTimer -= Time.deltaTime;
+            _gameTimer -= Time.deltaTime;
         if (_gameTimer <= 0)
         {
             EndGame(false);
@@ -75,10 +83,9 @@ public class GameManager : MonoBehaviour
             var seq = DOTween.Sequence();
             seq.Append(_finishedText.DOScale(1.5f, 0.3f));
             seq.Append(_finishedText.DOScale(1f, 1f));
-            seq.AppendInterval(3f);
+            seq.AppendInterval(2f);
             seq.AppendCallback(() =>
             {
-                _finishedText.gameObject.SetActive(false);
                 //go to result screen
                 LoadingScreen.Instance.LoadScene("UpgradeScene", "", "", 0);
             });
@@ -86,8 +93,16 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //go to main menu?
-            LoadingScreen.Instance.LoadScene("MainMenu", "", "", 0);
+            _timesUpText.localScale = Vector2.zero;
+            _timesUpText.gameObject.SetActive(true);
+            var seq = DOTween.Sequence().SetEase(Ease.OutQuad);
+            seq.Append(_timesUpText.DOScale(1.5f, 2.5f));
+            seq.AppendInterval(1.5f);
+            seq.AppendCallback(() =>
+            {
+                LoadingScreen.Instance.LoadScene("MainMenuScene", "FAILURE", "Shouldn't have used all your slipdays...", 2f);
+            });
+            seq.Play();
         }
     }
 
