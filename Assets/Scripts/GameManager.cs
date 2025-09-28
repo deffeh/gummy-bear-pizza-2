@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
     public void InitializeRound()
     {
         SetWC(0);
+        int round = PlayerManager.Instance.round;
+        WordsToWin = Mathf.CeilToInt(1000 * Mathf.Pow(1.5f, round - 1));
         _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
         PlayerManager.Instance.InstantSetHPToMax();
         WordManager.Instance?.Init(PlayerManager.Instance.round);
