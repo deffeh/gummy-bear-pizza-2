@@ -43,7 +43,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (RoundOver) { return; }
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EndGame(true);
+            return;
+        }
+        #endif
+
+            if (RoundOver) { return; }
         _gameTimer -= Time.deltaTime;
         UpdateTimeUI();
         if (_gameTimer <= 0)
@@ -78,7 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 _finishedText.gameObject.SetActive(false);
                 //go to result screen
-                LoadingScreen.Instance.LoadScene("ResultScreen", "", "", 0);
+                LoadingScreen.Instance.LoadScene("UpgradeScene", "", "", 0);
             });
             seq.Play();
         }
