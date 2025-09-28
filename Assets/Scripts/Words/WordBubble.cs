@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -10,12 +11,17 @@ public class WordBubble : MonoBehaviour
     [SerializeField] private int _rewardAmount;
     [SerializeField] private float _critChance;
     [SerializeField] private float _fatigueAmount = 10f;
+    [SerializeField] private RectTransform _rectTrans;
 
     private int _curWordIndex;
     private bool _completed;
+    private float _lifeTimeBase;
+    private Sequence _seq;
 
     public void Start()
     {
+        _rectTrans.GetComponent<RectTransform>();
+        _lifeTimeBase = _lifetime;
         ResetWord();
     }
 
@@ -27,6 +33,11 @@ public class WordBubble : MonoBehaviour
         _curWordIndex = 0;
         _rewardAmount = rewardAmount;
         ResetWord();
+        _rectTrans.localScale = Vector2.zero;
+        _seq = DOTween.Sequence().SetEase(Ease.InOutQuad);
+        _seq.Append(_rectTrans.DOScale(1.1f, 0.75f));
+        _seq.Append(_rectTrans.DOScale(1f, 1f));
+        _seq.Play();
     }
 
     public void Update()
@@ -44,9 +55,17 @@ public class WordBubble : MonoBehaviour
         if (_lifetime > 0 && !_completed)
         {
             _lifetime -= Time.deltaTime;
+
+            if (_lifetime < _lifeTimeBase / 2f)
+            {
+                var timeRatio = Mathf.Clamp01(_lifetime / (_lifeTimeBase / 2f));
+                _rectTrans.localScale = new Vector2(timeRatio, timeRatio);
+
+            }
             if (_lifetime <= 0)
             {
                 //kill itself
+                _seq.Kill();
                 Destroy(gameObject);
             }
         }
@@ -86,6 +105,7 @@ public class WordBubble : MonoBehaviour
         PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
         RectTransform explosion = Instantiate(TextExplosion, transform.parent);
         explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        _seq.Kill();
         Destroy(gameObject);
     }
 

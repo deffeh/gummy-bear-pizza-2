@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int WordsToWin = 1000;
     public bool RoundOver = false;
     private float lerpWC = 0;
-    
+
     private void Awake()
     {
         if (Instance == null)
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _baseTime = _gameTimer;
         _roundText.text = $"Round: {_round + 1}";
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
