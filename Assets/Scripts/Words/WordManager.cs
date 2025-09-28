@@ -81,6 +81,7 @@ public class WordManager : MonoBehaviour
         float yMax = (containerSize.y / 2f) - (bubbleSize.y / 2f) - yPadding;
 
         float randomX = Random.Range(xMin, xMax);
+        if (randomX < -containerSize.x / 7f) { yMin += containerSize.y / 5f; }
         float randomY = Random.Range(yMin, yMax);
         bubbleFab.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector2(randomX, randomY), Quaternion.identity);
     }
