@@ -8,6 +8,7 @@ namespace Phone
         public override void OnActivate()
         {
             ActivateText = "+Energy";
+            index = 2;
             base.OnActivate();
             PlayerManager.Instance?.UpdateEnergy(energyRegenAmount);
         }

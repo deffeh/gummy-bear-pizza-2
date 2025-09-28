@@ -3635,6 +3635,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 1217e9fdd3c18ae4fabd4847cec77a26, type: 3}
     - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: Reset
+      value: 
+      objectReference: {fileID: 8300000, guid: 829685d301c8789448b40f95d88b7bf1, type: 3}
+    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: PickUp
       value: 
       objectReference: {fileID: 8300000, guid: 04f5ae517d6f784439de43227f6be0d0, type: 3}
@@ -3646,6 +3650,14 @@ PrefabInstance:
       propertyPath: PutDown
       value: 
       objectReference: {fileID: 8300000, guid: 8128592e543e217469edb1abba351d2a, type: 3}
+    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: Multiplier
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d7971d8bafe99c4a951b58ab3ec5b09, type: 3}
+    - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
+      propertyPath: GainFatigue
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fc81d89f230b6041bc29614fa583905, type: 3}
     - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: lowerButton
       value: 
