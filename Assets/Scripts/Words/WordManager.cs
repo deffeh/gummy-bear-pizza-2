@@ -14,6 +14,9 @@ public class WordManager : MonoBehaviour
     private float _wordLength;
     private float _baseBubbleRate;
 
+    private int _rewardMultiplier = 1;
+    private float _multiplierDuration = 0.0f;
+
     private void Awake()
     {
         if (Instance == null)
@@ -45,12 +48,19 @@ public class WordManager : MonoBehaviour
             _bubbleRate = _baseBubbleRate;
             InstantiateBubble();
         }
+
+        if (_multiplierDuration > 0)
+        {
+            _multiplierDuration -= Time.deltaTime;
+            if (_multiplierDuration <= 0)
+                ResetRewardMultiplier();
+        }
     }
 
     public void InstantiateBubble()
     {
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble);
+        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble * _rewardMultiplier);
         PlaceBubbleRandomly(bubbleFab);
     }
 
@@ -100,4 +110,22 @@ public class WordManager : MonoBehaviour
             _listOfListsOfWords.Add(result);
         }
     }
+
+    public void GainRewardMultiplier()
+    {
+        _rewardMultiplier *= 2; // change this to read from upgrades if we have an upgrade that modifies the multiplier
+        _multiplierDuration = 15.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
+    }
+
+    public void ResetRewardMultiplier()
+    {
+        _rewardMultiplier = 1;
+    }
+
+    // For UI
+    public float GetMultiplierDuration()
+    {
+        return _multiplierDuration;
+    }
+
 } 

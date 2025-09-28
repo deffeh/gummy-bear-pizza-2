@@ -4,9 +4,10 @@ namespace Phone
 {
     public class DoNothingReel : Reel
     {
+        [SerializeField] private float energyRegenAmount = 5.0f;
         public override void OnActivate()
         {
-            
+            PlayerManager.Instance?.UpdateEnergy(energyRegenAmount);
         }
     }
 }

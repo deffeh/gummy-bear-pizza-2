@@ -6,7 +6,7 @@ namespace Phone
     {
         public override void OnActivate()
         {
-            
+            WordManager.Instance?.ResetRewardMultiplier();
         }
     }
 }
