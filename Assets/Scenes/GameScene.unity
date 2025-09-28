@@ -4592,6 +4592,7 @@ MonoBehaviour:
   _audioSource: {fileID: 8130005470908890463}
   _gong: {fileID: 8300000, guid: 9eefeef1a4a4228488cbad0c22779474, type: 3}
   _timpani: {fileID: 8300000, guid: 93e334741ccbde746a52e734a4c6f804, type: 3}
+  _finished: {fileID: 8300000, guid: 61a07905e5ca9b843b4ab3b2483b5e96, type: 3}
   WordsToWin: 500
   RoundOver: 0
 --- !u!1 &2262814033102155002
@@ -4910,8 +4911,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.47
-  m_Pitch: 0.88
+  m_Volume: 0.35
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0

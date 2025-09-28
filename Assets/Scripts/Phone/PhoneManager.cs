@@ -56,6 +56,7 @@ namespace Phone
 
             raiseButton.onClick.AddListener(() =>
             {
+                if (GameManager.Instance == null || GameManager.Instance.RoundOver) { return; }
                 raiseButton.interactable = false;
                 lowerButton.interactable = true;
                 OpenPhone();

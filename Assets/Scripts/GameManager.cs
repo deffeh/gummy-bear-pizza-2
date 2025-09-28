@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _gong;
     [SerializeField] private AudioClip _timpani;
+    [SerializeField] private AudioClip _finished;
 
 
     private float _baseTime;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
             _finishedText.gameObject.SetActive(true);
             PlayerManager.Instance.maxTime = TimeSpan.FromMinutes(_baseTime);
             PlayerManager.Instance.remainingTime = TimeSpan.FromMinutes(_gameTimer);
+            _audioSource.PlayOneShot(_finished);
             var seq = DOTween.Sequence();
             seq.Append(_finishedText.DOScale(1.5f, 0.3f));
             seq.Append(_finishedText.DOScale(1f, 1f));
