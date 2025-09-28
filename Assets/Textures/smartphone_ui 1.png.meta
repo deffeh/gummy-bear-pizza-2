@@ -88,7 +88,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -356,10 +356,10 @@ TextureImporter:
       name: smartphone_ui 1_9
       rect:
         serializedVersion: 2
-        x: 70
-        y: 324
-        width: 201
-        height: 203
+        x: 812
+        y: 456
+        width: 168
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: smartphone_ui 1_10
       rect:
         serializedVersion: 2
-        x: 306
-        y: 374
-        width: 176
-        height: 99
+        x: 817
+        y: 358
+        width: 33
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -400,10 +400,10 @@ TextureImporter:
       name: smartphone_ui 1_11
       rect:
         serializedVersion: 2
-        x: 812
-        y: 456
-        width: 168
-        height: 133
+        x: 873
+        y: 358
+        width: 34
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -422,10 +422,10 @@ TextureImporter:
       name: smartphone_ui 1_12
       rect:
         serializedVersion: 2
-        x: 817
-        y: 358
-        width: 33
-        height: 44
+        x: 933
+        y: 360
+        width: 32
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -444,10 +444,10 @@ TextureImporter:
       name: smartphone_ui 1_13
       rect:
         serializedVersion: 2
-        x: 873
-        y: 358
-        width: 34
-        height: 42
+        x: 37
+        y: 66
+        width: 201
+        height: 203
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,10 +466,10 @@ TextureImporter:
       name: smartphone_ui 1_14
       rect:
         serializedVersion: 2
-        x: 933
-        y: 360
-        width: 32
-        height: 40
+        x: 273
+        y: 116
+        width: 176
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,7 +488,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

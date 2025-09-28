@@ -27,6 +27,7 @@ public class WordManager : MonoBehaviour
         }
         else
         {
+            Instance.GetComponent<Canvas>().worldCamera = Camera.main;
             Destroy(gameObject);
             return;
         }
