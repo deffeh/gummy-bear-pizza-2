@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Phone;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
@@ -42,6 +43,9 @@ public class WordManager : MonoBehaviour
 
     private void Update()
     {
+        if (PhoneManager.Instance != null || PhoneManager.Instance.IsActive())
+        { return; }
+
         _bubbleRate -= Time.deltaTime;
         if (_bubbleRate <= 0)
         {

@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Meter: {fileID: 448477822}
+  Fire: {fileID: 1215592199}
   MultText: {fileID: 1825240076}
   ScaleCurve:
     serializedVersion: 2
@@ -459,9 +460,9 @@ MonoBehaviour:
   ScaleMult: 1.4
   ColorGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
+    key0: {r: 0, g: 0, b: 0, a: 0}
     key1: {r: 0.7816192, g: 0, b: 0.010162177, a: 1}
-    key2: {r: 1, g: 0, b: 0.013001442, a: 0}
+    key2: {r: 1, g: 0, b: 0.013001442, a: 1}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -476,8 +477,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 65535
-    atime2: 0
+    atime1: 3932
+    atime2: 65535
     atime3: 0
     atime4: 0
     atime5: 0
@@ -486,7 +487,40 @@ MonoBehaviour:
     m_Mode: 0
     m_ColorSpace: -1
     m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+    m_NumAlphaKeys: 3
+  FireFade:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0018920898
+      inSlope: 0.6853967
+      outSlope: 0.6853967
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.2740686
+    - serializedVersion: 3
+      time: 0.18747002
+      value: 1
+      inSlope: 15.93826
+      outSlope: 0
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.04076004
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &513466614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1462,7 +1496,7 @@ GameObject:
   - component: {fileID: 1215592200}
   - component: {fileID: 1215592199}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Firte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,6 +1989,7 @@ MonoBehaviour:
   _roundText: {fileID: 1268563109}
   _wordCount: {fileID: 714734036}
   _finishedText: {fileID: 0}
+  _stickyNoteText: {fileID: 0}
   _gameTimer: 180
   _wordCountLerpSpeed: 70
   WordsToWin: 1000
