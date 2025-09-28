@@ -83,12 +83,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalMoney: 0
   totalMoneyText: {fileID: 0}
-  MoreThoughtsUpgrade: {fileID: 8299405620964161649}
-  LongerThoughtsUpgrade: {fileID: 7445814989511345607}
-  CriticalThinkingUpgrade: {fileID: 8912205639988743580}
-  EnergyRegenUpgrade: {fileID: 2546297299560979984}
-  WordsTypedUpgrade: {fileID: 6137081986418951038}
-  LessTimeLossUpgrade: {fileID: 8566172970998470363}
+  moreThoughtsUpgrade: {fileID: 8299405620964161649}
+  longerThoughtsUpgrade: {fileID: 7445814989511345607}
+  criticalThinkingUpgrade: {fileID: 8912205639988743580}
+  energyRegenUpgrade: {fileID: 2546297299560979984}
+  wordsTypedUpgrade: {fileID: 6137081986418951038}
+  lessTimeLossUpgrade: {fileID: 8566172970998470363}
+  goToNextLevelButton: {fileID: 0}
+  moreThoughtsUpgradeAmount: 0.2
+  longerThoughtsUpgradeAmount: 0.5
+  criticalThinkingUpgradeAmount: 0
+  energyRegenUpgradeAmount: 2.5
+  wordsTypedUpgradeAmount: 5
+  lessTimeLossUpgradeAmount: 0
 --- !u!1001 &121187496653860119
 PrefabInstance:
   m_ObjectHideFlags: 0

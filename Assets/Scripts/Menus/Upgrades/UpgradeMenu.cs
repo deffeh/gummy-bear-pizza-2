@@ -1,4 +1,5 @@
 using System;
+using Phone;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,54 +11,61 @@ namespace Menus.Upgrades
     {
         [SerializeField] private int totalMoney;
         [SerializeField] private TMP_Text totalMoneyText;
-        [SerializeField] private StatUpgrade MoreThoughtsUpgrade;
-        [SerializeField] private StatUpgrade LongerThoughtsUpgrade;
-        [SerializeField] private StatUpgrade CriticalThinkingUpgrade;
-        [SerializeField] private StatUpgrade EnergyRegenUpgrade;
-        [SerializeField] private StatUpgrade WordsTypedUpgrade;
-        [SerializeField] private StatUpgrade LessTimeLossUpgrade;
-        [SerializeField] private Button GoToNextLevelButton;
+        [SerializeField] private StatUpgrade moreThoughtsUpgrade;
+        [SerializeField] private StatUpgrade longerThoughtsUpgrade;
+        [SerializeField] private StatUpgrade criticalThinkingUpgrade;
+        [SerializeField] private StatUpgrade energyRegenUpgrade;
+        [SerializeField] private StatUpgrade wordsTypedUpgrade;
+        [SerializeField] private StatUpgrade lessTimeLossUpgrade;
+        [SerializeField] private Button goToNextLevelButton;
+
+        [SerializeField] private float moreThoughtsUpgradeAmount = 0.2f;
+        [SerializeField] private float longerThoughtsUpgradeAmount = 0.5f;
+        [SerializeField] private float criticalThinkingUpgradeAmount;
+        [SerializeField] private float energyRegenUpgradeAmount = 2.5f;
+        [SerializeField] private int wordsTypedUpgradeAmount = 5;
+        [SerializeField] private float lessTimeLossUpgradeAmount;
         
         public void Start()
         {
             totalMoney = PlayerManager.Instance.totalMoney;
             
-            MoreThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.moreThoughtsLevel;
-            LongerThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.longerThoughtsLevel;
-            CriticalThinkingUpgrade.upgradeLevel = PlayerManager.Instance.criticalThinkingLevel;
-            EnergyRegenUpgrade.upgradeLevel = PlayerManager.Instance.energyRegenLevel;
-            WordsTypedUpgrade.upgradeLevel = PlayerManager.Instance.wordsTypedLevel;
-            LessTimeLossUpgrade.upgradeLevel = PlayerManager.Instance.lessTimeLossLevel;
+            moreThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.moreThoughtsLevel;
+            longerThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.longerThoughtsLevel;
+            criticalThinkingUpgrade.upgradeLevel = PlayerManager.Instance.criticalThinkingLevel;
+            energyRegenUpgrade.upgradeLevel = PlayerManager.Instance.energyRegenLevel;
+            wordsTypedUpgrade.upgradeLevel = PlayerManager.Instance.wordsTypedLevel;
+            lessTimeLossUpgrade.upgradeLevel = PlayerManager.Instance.lessTimeLossLevel;
             
-            MoreThoughtsUpgrade.upgradeButton.onClick.AddListener(UpgradeMoreThoughts);
-            LongerThoughtsUpgrade.upgradeButton.onClick.AddListener(UpgradeLongerThoughts);
-            CriticalThinkingUpgrade.upgradeButton.onClick.AddListener(UpgradeCriticalThinking);
-            EnergyRegenUpgrade.upgradeButton.onClick.AddListener(UpgradeEnergyRegen);
-            WordsTypedUpgrade.upgradeButton.onClick.AddListener(UpgradeWordsTyped);
-            LessTimeLossUpgrade.upgradeButton.onClick.AddListener(UpgradeLessTimeLoss);
-            GoToNextLevelButton.onClick.AddListener(() =>
+            moreThoughtsUpgrade.upgradeButton.onClick.AddListener(UpgradeMoreThoughts);
+            longerThoughtsUpgrade.upgradeButton.onClick.AddListener(UpgradeLongerThoughts);
+            criticalThinkingUpgrade.upgradeButton.onClick.AddListener(UpgradeCriticalThinking);
+            energyRegenUpgrade.upgradeButton.onClick.AddListener(UpgradeEnergyRegen);
+            wordsTypedUpgrade.upgradeButton.onClick.AddListener(UpgradeWordsTyped);
+            lessTimeLossUpgrade.upgradeButton.onClick.AddListener(UpgradeLessTimeLoss);
+            goToNextLevelButton.onClick.AddListener(() =>
             {
                 LoadingScreen.Instance.LoadNextRound(++PlayerManager.Instance.round);
             });
             
-            MoreThoughtsUpgrade.UpdateStatInfo();
-            LongerThoughtsUpgrade.UpdateStatInfo();
-            CriticalThinkingUpgrade.UpdateStatInfo();
-            EnergyRegenUpgrade.UpdateStatInfo();
-            WordsTypedUpgrade.UpdateStatInfo();
-            LessTimeLossUpgrade.UpdateStatInfo();
+            moreThoughtsUpgrade.UpdateStatInfo();
+            longerThoughtsUpgrade.UpdateStatInfo();
+            criticalThinkingUpgrade.UpdateStatInfo();
+            energyRegenUpgrade.UpdateStatInfo();
+            wordsTypedUpgrade.UpdateStatInfo();
+            lessTimeLossUpgrade.UpdateStatInfo();
             
             SpendMoney(0);
         }
 
-        public void Update()
+        private void UpdateButtonState()
         {
-            MoreThoughtsUpgrade.upgradeButton.interactable = (MoreThoughtsUpgrade.upgradeCost <= totalMoney);
-            LongerThoughtsUpgrade.upgradeButton.interactable = (LongerThoughtsUpgrade.upgradeCost <= totalMoney);
-            CriticalThinkingUpgrade.upgradeButton.interactable = (CriticalThinkingUpgrade.upgradeCost <= totalMoney);
-            EnergyRegenUpgrade.upgradeButton.interactable = (EnergyRegenUpgrade.upgradeCost <= totalMoney);
-            WordsTypedUpgrade.upgradeButton.interactable = (WordsTypedUpgrade.upgradeCost <= totalMoney);
-            LessTimeLossUpgrade.upgradeButton.interactable = (LessTimeLossUpgrade.upgradeCost <= totalMoney);
+            moreThoughtsUpgrade.upgradeButton.interactable = (moreThoughtsUpgrade.upgradeCost <= totalMoney);
+            longerThoughtsUpgrade.upgradeButton.interactable = (longerThoughtsUpgrade.upgradeCost <= totalMoney);
+            criticalThinkingUpgrade.upgradeButton.interactable = (criticalThinkingUpgrade.upgradeCost <= totalMoney);
+            energyRegenUpgrade.upgradeButton.interactable = (energyRegenUpgrade.upgradeCost <= totalMoney);
+            wordsTypedUpgrade.upgradeButton.interactable = (wordsTypedUpgrade.upgradeCost <= totalMoney);
+            lessTimeLossUpgrade.upgradeButton.interactable = (lessTimeLossUpgrade.upgradeCost <= totalMoney);
         }
 
         private void SpendMoney(int moneySpent)
@@ -65,66 +73,81 @@ namespace Menus.Upgrades
             totalMoney -= moneySpent;
             totalMoneyText.text = "$" + totalMoney;
             PlayerManager.Instance.totalMoney = totalMoney;
+            UpdateButtonState();
         }
 
         public void UpgradeMoreThoughts()
         {
             Debug.Log("More thoughts!");
 
-            MoreThoughtsUpgrade.upgradeLevel++;
-            PlayerManager.Instance.moreThoughtsLevel = MoreThoughtsUpgrade.upgradeLevel;
-            SpendMoney(MoreThoughtsUpgrade.upgradeCost);
-            MoreThoughtsUpgrade.UpdateStatInfo();
+            WordManager.Instance._bubbleRate -= moreThoughtsUpgradeAmount;
+
+            moreThoughtsUpgrade.upgradeLevel++;
+            PlayerManager.Instance.moreThoughtsLevel = moreThoughtsUpgrade.upgradeLevel;
+            SpendMoney(moreThoughtsUpgrade.upgradeCost);
+            moreThoughtsUpgrade.UpdateStatInfo();
         }
 
         public void UpgradeLongerThoughts()
         {
             Debug.Log("Longer thoughts!");
             
-            LongerThoughtsUpgrade.upgradeLevel++;
-            PlayerManager.Instance.longerThoughtsLevel = LongerThoughtsUpgrade.upgradeLevel;
-            SpendMoney(LongerThoughtsUpgrade.upgradeCost);
-            LongerThoughtsUpgrade.UpdateStatInfo();
+            WordManager.Instance._bubbleDuration += longerThoughtsUpgradeAmount;
+            
+            longerThoughtsUpgrade.upgradeLevel++;
+            PlayerManager.Instance.longerThoughtsLevel = longerThoughtsUpgrade.upgradeLevel;
+            SpendMoney(longerThoughtsUpgrade.upgradeCost);
+            longerThoughtsUpgrade.UpdateStatInfo();
         }
 
         public void UpgradeCriticalThinking()
         {
             Debug.Log("Critical thinking!");
             
-            CriticalThinkingUpgrade.upgradeLevel++;
-            PlayerManager.Instance.criticalThinkingLevel = CriticalThinkingUpgrade.upgradeLevel;
-            SpendMoney(CriticalThinkingUpgrade.upgradeCost);
-            CriticalThinkingUpgrade.UpdateStatInfo();
+            // ???
+            
+            criticalThinkingUpgrade.upgradeLevel++;
+            PlayerManager.Instance.criticalThinkingLevel = criticalThinkingUpgrade.upgradeLevel;
+            SpendMoney(criticalThinkingUpgrade.upgradeCost);
+            criticalThinkingUpgrade.UpdateStatInfo();
         }
 
         public void UpgradeEnergyRegen()
         {
             Debug.Log("Energy regen!");
+
+            GainMultiplierReel.energyRegenAmount += energyRegenUpgradeAmount;
+            DoNothingReel.energyRegenAmount += energyRegenUpgradeAmount;
+            GainMultiplierReel.energyRegenAmount += energyRegenUpgradeAmount;
             
-            CriticalThinkingUpgrade.upgradeLevel++;
-            PlayerManager.Instance.energyRegenLevel = CriticalThinkingUpgrade.upgradeLevel;
-            SpendMoney(EnergyRegenUpgrade.upgradeCost);
-            EnergyRegenUpgrade.UpdateStatInfo();
+            energyRegenUpgrade.upgradeLevel++;
+            PlayerManager.Instance.energyRegenLevel = energyRegenUpgrade.upgradeLevel;
+            SpendMoney(energyRegenUpgrade.upgradeCost);
+            energyRegenUpgrade.UpdateStatInfo();
         }
 
         public void UpgradeWordsTyped()
         {
             Debug.Log("Words typed!");
             
-            WordsTypedUpgrade.upgradeLevel++;
-            PlayerManager.Instance.wordsTypedLevel = WordsTypedUpgrade.upgradeLevel;
-            SpendMoney(WordsTypedUpgrade.upgradeCost);
-            WordsTypedUpgrade.UpdateStatInfo();
+            WordManager.Instance._rewardWordsPerBubble += wordsTypedUpgradeAmount;
+            
+            wordsTypedUpgrade.upgradeLevel++;
+            PlayerManager.Instance.wordsTypedLevel = wordsTypedUpgrade.upgradeLevel;
+            SpendMoney(wordsTypedUpgrade.upgradeCost);
+            wordsTypedUpgrade.UpdateStatInfo();
         }
 
         public void UpgradeLessTimeLoss()
         {
             Debug.Log("Less time loss!");
             
-            LessTimeLossUpgrade.upgradeLevel++;
-            PlayerManager.Instance.lessTimeLossLevel = LessTimeLossUpgrade.upgradeLevel;
-            SpendMoney(LessTimeLossUpgrade.upgradeCost);
-            LessTimeLossUpgrade.UpdateStatInfo();
+            // ???
+            
+            lessTimeLossUpgrade.upgradeLevel++;
+            PlayerManager.Instance.lessTimeLossLevel = lessTimeLossUpgrade.upgradeLevel;
+            SpendMoney(lessTimeLossUpgrade.upgradeCost);
+            lessTimeLossUpgrade.UpdateStatInfo();
         }
     }
 }

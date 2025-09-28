@@ -2807,6 +2807,14 @@ PrefabInstance:
       propertyPath: GoToNextLevelButton
       value: 
       objectReference: {fileID: 517666048}
+    - target: {fileID: 2400409519345569255, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: goToNextLevelButton
+      value: 
+      objectReference: {fileID: 517666048}
+    - target: {fileID: 2546297299560979984, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: upgradeName
+      value: Increased Energy Gained Per Reel
+      objectReference: {fileID: 0}
     - target: {fileID: 2728534129043655712, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2958,6 +2966,10 @@ PrefabInstance:
     - target: {fileID: 3776341901324427068, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088576703372969344, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
+      propertyPath: m_text
+      value: Increased Energy Gained Per Reel
       objectReference: {fileID: 0}
     - target: {fileID: 4220684565963732059, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y

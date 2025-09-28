@@ -7,9 +7,9 @@ public class WordManager : MonoBehaviour
 {
     public static WordManager Instance;
     [SerializeField] private WordBubble _wordBubblePrefab;
-    [SerializeField] private float _bubbleDuration;
-    [SerializeField] private float _bubbleRate;
-    [SerializeField] private int _rewardWordsPerBubble;
+    [SerializeField] public float _bubbleDuration;
+    [SerializeField] public float _bubbleRate;
+    [SerializeField] public int _rewardWordsPerBubble;
     [SerializeField] private List<TextAsset> _textFiles;
     private List<List<string>> _listOfListsOfWords;
     private float _wordLength;

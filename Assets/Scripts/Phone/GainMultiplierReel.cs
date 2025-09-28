@@ -4,7 +4,7 @@ namespace Phone
 {
     public class GainMultiplierReel : Reel
     {
-        [SerializeField] private float energyRegenAmount = 5.0f;
+        [SerializeField] public static float energyRegenAmount = 5.0f;
         public override void OnActivate()
         {
             PlayerManager.Instance?.UpdateEnergy(energyRegenAmount);
