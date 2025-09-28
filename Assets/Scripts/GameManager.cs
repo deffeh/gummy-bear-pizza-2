@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             EndGame(true);
             return;
         }
-        #endif
+#endif
 
         _gameTimer -= Time.deltaTime;
         if (_gameTimer <= 0)
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         if (lerpWC != totalWC)
         {
             lerpWC = Mathf.Lerp(lerpWC, totalWC, Time.deltaTime * _wordCountLerpSpeed);
-            _wordCount.text = $"{(int)Mathf.Ceil(lerpWC)}";
+            SetWC(lerpWC);
         }
     }
 
@@ -98,7 +98,8 @@ public class GameManager : MonoBehaviour
     public void InitializeRound()
     {
         _round++;
-        _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT"; 
+        SetWC(0);
+        _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
         WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
         //start intro cutscene?
         _gameTimer = _baseTime;
@@ -111,6 +112,11 @@ public class GameManager : MonoBehaviour
         TimeSpan timeSpent = TimeSpan.FromMinutes(Mathf.Clamp(_baseTime - _gameTimer, 0, _baseTime));
         TimeSpan totalTime = baseTime + timeSpent;
         return $"{totalTime.ToString(@"h\:mm")}";
+    }
+
+    private void SetWC(float wc)
+    {
+        _wordCount.text = $"<b>{(int)Mathf.Ceil(wc)}</b> words";
     }
 
 }
