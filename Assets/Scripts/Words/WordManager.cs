@@ -188,7 +188,7 @@ public class WordManager : MonoBehaviour
 
     public void GainRewardMultiplier()
     {
-        _rewardMultiplier *= 2; // change this to read from upgrades if we have an upgrade that modifies the multiplier
+        _rewardMultiplier++; // change this to read from upgrades if we have an upgrade that modifies the multiplier
         _multiplierDuration = 15.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
         CritMeter.SetMultMeter(_rewardMultiplier, _multiplierDuration);
     }

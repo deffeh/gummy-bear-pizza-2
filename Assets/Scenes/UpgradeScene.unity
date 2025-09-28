@@ -3097,7 +3097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137081986418951038, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: upgradeCost
-      value: 75
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6498427551481096978, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3257,7 +3257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445814989511345607, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: upgradeCost
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7516683322123972011, guid: 69f1fb7bda6268a4cb8f8ae8c5287b07, type: 3}
       propertyPath: m_AnchorMax.y
