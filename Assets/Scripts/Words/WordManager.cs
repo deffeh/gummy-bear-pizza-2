@@ -115,11 +115,13 @@ public class WordManager : MonoBehaviour
     {
         _rewardMultiplier *= 2; // change this to read from upgrades if we have an upgrade that modifies the multiplier
         _multiplierDuration = 15.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
+        CritMeter.SetMultMeter(_rewardMultiplier, _multiplierDuration);
     }
 
     public void ResetRewardMultiplier()
     {
         _rewardMultiplier = 1;
+        CritMeter.ResetMultMeter();
     }
 
     // For UI
