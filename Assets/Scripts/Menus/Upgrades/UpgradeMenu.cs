@@ -80,7 +80,7 @@ namespace Menus.Upgrades
         {
             Debug.Log("More thoughts!");
 
-            WordManager.Instance._bubbleRate -= moreThoughtsUpgradeAmount;
+            WordManager.Instance._baseBubbleRate -= moreThoughtsUpgradeAmount;
 
             moreThoughtsUpgrade.upgradeLevel++;
             PlayerManager.Instance.moreThoughtsLevel = moreThoughtsUpgrade.upgradeLevel;

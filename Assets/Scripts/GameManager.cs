@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         SetWC(0);
         _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
         PlayerManager.Instance.InstantSetHPToMax();
-        WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
+        WordManager.Instance?.Init(PlayerManager.Instance.round);
         //start intro cutscene?
         _gameTimer = _baseTime;
         RoundOver = false;
