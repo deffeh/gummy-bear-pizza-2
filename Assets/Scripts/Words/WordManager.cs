@@ -55,11 +55,11 @@ public class WordManager : MonoBehaviour
             float rateMultiplier = 1f;
             if (ratio < 0.33f)
             {
-                rateMultiplier = 1.85f;
+                rateMultiplier = 3f;
             }
             else if (ratio < 0.66f)
             {
-                rateMultiplier = 1.35f;
+                rateMultiplier = 1.5f;
             }
             
             _bubbleRate = _baseBubbleRate * rateMultiplier;
