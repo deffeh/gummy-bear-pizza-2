@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     private float curFatigue = 100;
     public EnergyBar Bar;
 
-    public int totalMoney = 0;
+    public int totalMoney = 300;
     public int moreThoughtsLevel = 1;
     public int longerThoughtsLevel = 1;
     public int criticalThinkingLevel = 1;

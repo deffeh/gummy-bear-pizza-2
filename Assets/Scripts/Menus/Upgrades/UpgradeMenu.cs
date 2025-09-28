@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Menus.Upgrades
 {
@@ -15,9 +16,11 @@ namespace Menus.Upgrades
         [SerializeField] private StatUpgrade EnergyRegenUpgrade;
         [SerializeField] private StatUpgrade WordsTypedUpgrade;
         [SerializeField] private StatUpgrade LessTimeLossUpgrade;
+        [SerializeField] private Button GoToNextLevelButton;
+        
         public void Start()
         {
-            // totalMoney = PlayerManager.Instance.totalMoney;
+            totalMoney = PlayerManager.Instance.totalMoney;
             
             MoreThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.moreThoughtsLevel;
             LongerThoughtsUpgrade.upgradeLevel = PlayerManager.Instance.longerThoughtsLevel;
@@ -32,6 +35,10 @@ namespace Menus.Upgrades
             EnergyRegenUpgrade.upgradeButton.onClick.AddListener(UpgradeEnergyRegen);
             WordsTypedUpgrade.upgradeButton.onClick.AddListener(UpgradeWordsTyped);
             LessTimeLossUpgrade.upgradeButton.onClick.AddListener(UpgradeLessTimeLoss);
+            GoToNextLevelButton.onClick.AddListener(() =>
+            {
+                LoadingScreen.Instance.LoadNextRound(GameManager.Instance._round++);
+            });
             
             MoreThoughtsUpgrade.UpdateStatInfo();
             LongerThoughtsUpgrade.UpdateStatInfo();
@@ -45,12 +52,12 @@ namespace Menus.Upgrades
 
         public void Update()
         {
-            MoreThoughtsUpgrade.upgradeButton.interactable = (MoreThoughtsUpgrade.upgradeCost >= totalMoney);
-            LongerThoughtsUpgrade.upgradeButton.interactable = (LongerThoughtsUpgrade.upgradeCost >= totalMoney);
-            CriticalThinkingUpgrade.upgradeButton.interactable = (CriticalThinkingUpgrade.upgradeCost >= totalMoney);
-            EnergyRegenUpgrade.upgradeButton.interactable = (EnergyRegenUpgrade.upgradeCost >= totalMoney);
-            WordsTypedUpgrade.upgradeButton.interactable = (WordsTypedUpgrade.upgradeCost >= totalMoney);
-            LessTimeLossUpgrade.upgradeButton.interactable = (LessTimeLossUpgrade.upgradeCost >= totalMoney);
+            MoreThoughtsUpgrade.upgradeButton.interactable = (MoreThoughtsUpgrade.upgradeCost <= totalMoney);
+            LongerThoughtsUpgrade.upgradeButton.interactable = (LongerThoughtsUpgrade.upgradeCost <= totalMoney);
+            CriticalThinkingUpgrade.upgradeButton.interactable = (CriticalThinkingUpgrade.upgradeCost <= totalMoney);
+            EnergyRegenUpgrade.upgradeButton.interactable = (EnergyRegenUpgrade.upgradeCost <= totalMoney);
+            WordsTypedUpgrade.upgradeButton.interactable = (WordsTypedUpgrade.upgradeCost <= totalMoney);
+            LessTimeLossUpgrade.upgradeButton.interactable = (LessTimeLossUpgrade.upgradeCost <= totalMoney);
         }
 
         private void SpendMoney(int moneySpent)

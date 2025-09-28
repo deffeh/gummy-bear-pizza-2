@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _stickyNoteText;
     [SerializeField] private float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
-    private int _round = 0;
+    public int _round = 0;
     private float _baseTime;
     public int WordsToWin = 1000;
     public bool RoundOver = true;
