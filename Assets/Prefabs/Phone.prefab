@@ -310,6 +310,9 @@ MonoBehaviour:
   phoneRect: {fileID: 7855642138667519783}
   screen: {fileID: 311535457929748073}
   reelPrefabs:
+  - {fileID: 2306409521401694118, guid: 6b9875409ea1e47419bf0ad295ddb210, type: 3}
+  - {fileID: 2306409521401694118, guid: 621f3c236a47b404387da749888b679c, type: 3}
+  - {fileID: 2306409521401694118, guid: 081ff3194bda4db40aa8da1db153740e, type: 3}
   - {fileID: 2306409521401694118, guid: 1b67a38c587a2da44929b46a05106ed3, type: 3}
   animationDuration: 0.5
   activePosition: {x: 0, y: 0}
