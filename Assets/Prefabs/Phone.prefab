@@ -414,6 +414,7 @@ MonoBehaviour:
   raiseButton: {fileID: 0}
   lowerButton: {fileID: 0}
   inactiveScreen: {fileID: 3289421700275020453}
+  _hand: {fileID: 8389238140374684566}
 --- !u!1 &8254267351869202736
 GameObject:
   m_ObjectHideFlags: 0

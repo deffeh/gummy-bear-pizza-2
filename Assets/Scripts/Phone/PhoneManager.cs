@@ -21,6 +21,7 @@ namespace Phone
         [SerializeField] private Button raiseButton;
         [SerializeField] private Button lowerButton;
         [SerializeField] private InactiveScreen inactiveScreen;
+        [SerializeField] private GameObject _hand;
 
         private bool _isSwiped = false;
         private bool _isActive = false;
@@ -92,7 +93,7 @@ namespace Phone
         public void Swipe()
         {
             if (_isSwiped || !_isActive) return;
-            
+            _hand.SetActive(false);
             _isSwiped = true;
             
             StartCoroutine(SwipeCooldownRoutine());
