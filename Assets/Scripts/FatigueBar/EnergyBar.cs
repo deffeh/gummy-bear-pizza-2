@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
 {
+    public Gradient gradient;
     private Material BarMat;
     [SerializeField] private float _lerpSpeed = 5f;
     public Image BarImage;
     private int percentId;
-    private float _lerpVal;
+    private float _lerpVal = 1;
     private float _targetVal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,7 @@ public class EnergyBar : MonoBehaviour
         {
             _lerpVal = Mathf.Lerp(_lerpVal, _targetVal, Time.deltaTime * _lerpSpeed);
             BarMat.SetFloat(percentId, _lerpVal);
+            BarImage.color = gradient.Evaluate(_lerpVal);
         }   
     }
 }
