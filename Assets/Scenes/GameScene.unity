@@ -3657,7 +3657,7 @@ PrefabInstance:
     - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: GainFatigue
       value: 
-      objectReference: {fileID: 8300000, guid: 0fc81d89f230b6041bc29614fa583905, type: 3}
+      objectReference: {fileID: 8300000, guid: 4739d8e11d4fdeb40be7417122c02f6f, type: 3}
     - target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
       propertyPath: lowerButton
       value: 
