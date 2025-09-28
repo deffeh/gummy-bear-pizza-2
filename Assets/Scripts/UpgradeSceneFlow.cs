@@ -16,6 +16,7 @@ public class UpgradeSceneFlow : MonoBehaviour
     [SerializeField] private TMP_Text _RANK;
     private int lerpVal;
     [SerializeField] private float lerpDuration = 5f;
+    [SerializeField] private AudioSource _audioSource;
 
     public void Awake()
     {
@@ -30,7 +31,7 @@ public class UpgradeSceneFlow : MonoBehaviour
         var seq = DOTween.Sequence();
         seq.AppendCallback(() => _panelOne.SetActive(true));
         seq.AppendInterval(2f);
-        seq.AppendCallback(() => { _timeRemainTitle.SetActive(true); _panelOne.SetActive(false); });
+        seq.AppendCallback(() => { _timeRemainTitle.SetActive(true); _panelOne.SetActive(false); _audioSource.Play(); });
         float stepDur = 1.5f;
         seq.AppendInterval(stepDur);
         seq.AppendCallback(() =>
@@ -44,11 +45,12 @@ public class UpgradeSceneFlow : MonoBehaviour
                 _timeRemain.text = $"{remainingTime.Hours} hours and {remainingTime.Minutes} minutes";
             }
             _timeRemain.gameObject.SetActive(true);
+            _audioSource.Play();
         });
         seq.AppendInterval(stepDur);
-        seq.AppendCallback(() => _goldObtainedTitle.SetActive(true));
+        seq.AppendCallback(() => { _goldObtainedTitle.SetActive(true); _audioSource.Play();});
         seq.AppendInterval(stepDur);
-        seq.AppendCallback(() => _goldObtained.gameObject.SetActive(true));
+        seq.AppendCallback(() => { _goldObtained.gameObject.SetActive(true); _audioSource.Play();});
         seq.AppendInterval(stepDur / 2f);
         seq.Append(DOTween.To(() => lerpVal, x =>
         {
