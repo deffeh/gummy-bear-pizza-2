@@ -12,6 +12,9 @@ namespace Phone
         public AudioClip PickUp;
         public AudioClip PutDown;
         public AudioClip Click;
+        public AudioClip Reset;
+        public AudioClip Multiplier;
+        public AudioClip GainFatigue;
         public AudioSource Source;
         
         public TextMeshProUGUI TextPrefab;
@@ -177,6 +180,22 @@ namespace Phone
             yield return new WaitForSeconds(swipeCooldown);
             _isSwiped = false;
         }
+
+        public static void PlaySound(int sound)
+        {
+            switch (sound)
+            {
+                case 0:
+                    Instance.Source.PlayOneShot(Instance.Reset);
+                    break;
+                case 1:
+                    Instance.Source.PlayOneShot(Instance.Multiplier);
+                    break;
+                case 2:
+                    Instance.Source.PlayOneShot(Instance.GainFatigue);
+                    break;
+            }
+        }
         
         private void AddReel()
         {
@@ -211,8 +230,9 @@ namespace Phone
                 return null;
             }
 
+            int reelType = GetWeightedRandomReelIndex();
             // make sure the order of reel prefabs is [0]reset multiplier, [1]gain multiplier, [2]gain energy, [3]do nothing
-            return reelPrefabs[GetWeightedRandomReelIndex()];
+            return reelPrefabs[reelType];
         }
 
         private int GetWeightedRandomReelIndex()

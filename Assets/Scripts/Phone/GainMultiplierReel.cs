@@ -8,6 +8,7 @@ namespace Phone
         public override void OnActivate()
         {
             ActivateText = "+Multiplier";
+            index = 1;
             base.OnActivate();
             PlayerManager.Instance?.UpdateEnergy(energyRegenAmount);
             WordManager.Instance?.GainRewardMultiplier();

@@ -9,6 +9,7 @@ namespace Phone
         [SerializeField] private Texture2D[] textures;
         [SerializeField] public static int timeLostPerReel = 3;
         public string ActivateText = "";
+        public int index = 3;
         public void Initialize()
         {
             if (textures.Length <= 0) return;
@@ -28,7 +29,11 @@ namespace Phone
             {
                 TextMeshProUGUI newText = Instantiate(PhoneManager.Instance.TextPrefab, transform.parent);
                 newText.text = ActivateText;
+                
             }
+
+            PhoneManager.PlaySound(index);
+
         }
     }
 }
