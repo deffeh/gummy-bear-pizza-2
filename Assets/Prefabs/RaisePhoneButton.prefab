@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3213649942668189587}
   - component: {fileID: 6192204385307956031}
   - component: {fileID: 5725656322466237932}
-  - component: {fileID: 5393825452221573540}
   m_Layer: 5
   m_Name: RaisePhoneButton
   m_TagString: Untagged
@@ -121,32 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6192204385307956031}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Reels.Phone, Assembly-CSharp
-        m_MethodName: OpenPhone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5393825452221573540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244509955614134810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbd7ba4d4aa48243b60781f1d770396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phone: {fileID: 0}
+      m_Calls: []
 --- !u!1 &3442468758408420769
 GameObject:
   m_ObjectHideFlags: 0

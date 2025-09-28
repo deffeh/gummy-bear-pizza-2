@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Reels
+namespace Phone
 {
-    public class GainEnergyReel : Reel
+    public class GainMultiplierReel : Reel
     {
         public override void OnActivate()
         {

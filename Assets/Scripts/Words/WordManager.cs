@@ -93,6 +93,8 @@ public class WordManager : MonoBehaviour
             var words = text.text.Split("\n");
             foreach (string word in words)
             {
+                if (word.Length < 3 || word == null) { continue; }
+                word.Trim();
                 result.Add(word);
             }
             _listOfListsOfWords.Add(result);

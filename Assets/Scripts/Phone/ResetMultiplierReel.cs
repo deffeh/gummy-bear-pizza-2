@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Reels
+namespace Phone
 {
-    public class DoNothingReel : Reel
+    public class ResetMultiplierReel : Reel
     {
         public override void OnActivate()
         {
