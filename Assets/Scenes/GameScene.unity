@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <b>81</b> words
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
+  m_sharedMaterial: {fileID: -3601717979251990258, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -390,8 +390,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TYPE!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
+  m_sharedMaterial: {fileID: -3601717979251990258, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -738,10 +738,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asd
+  m_text: x2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
+  m_sharedMaterial: {fileID: 4083354836547638238, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -765,10 +765,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.65
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 2
   m_fontSizeMax: 144
   m_fontStyle: 1
@@ -895,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7858870765886446666, guid: 6ef6f818ee90e0c47a982fde74412e28, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -100
+      value: -99.99994
       objectReference: {fileID: 0}
     - target: {fileID: 7858870765886446666, guid: 6ef6f818ee90e0c47a982fde74412e28, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917012347603806272, guid: da6d48e404721784f894ea58f59dfd2d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -125.04
+      value: -125.03998
       objectReference: {fileID: 0}
     - target: {fileID: 1917012347603806272, guid: da6d48e404721784f894ea58f59dfd2d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1804,8 +1804,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1000 WORDS DUE AT MIDNIGHT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
+  m_sharedMaterial: {fileID: -3601717979251990258, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ac0a220ee305e7428dcedf38a329492, type: 3}
   Source: {fileID: 1162118169}
   PagePrefab: {fileID: 1933654748391711085, guid: a95e0b23b1961d24cabc5377271c26f9, type: 3}
-  debug: 1
+  debug: 0
   wordLimit: 300
   essay: According to all known laws of aviation, there is no way a bee should be
     able to fly. Its wings are too small to get its fat little body off the ground.
@@ -3239,8 +3239,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 5000 WORDS DUE MIDNIGHT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
+  m_sharedMaterial: {fileID: 4083354836547638238, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3264,7 +3264,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
+  m_fontSize: 26.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3704,8 +3704,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: IT'S 9 PM
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
+  m_sharedMaterial: {fileID: -3601717979251990258, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4131,8 +4131,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TIMES UP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
+  m_sharedMaterial: {fileID: 4083354836547638238, guid: 1be1aafea68600c4dba9859c51eb841a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4557,14 +4557,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: FINISHED!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
+  m_sharedMaterial: {fileID: -3601717979251990258, guid: c4226a0b2b41607449dc06e10d8c1873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278217471
   m_fontColor: {r: 1, g: 0.4146986, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
