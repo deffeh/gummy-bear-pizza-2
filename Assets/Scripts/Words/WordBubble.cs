@@ -114,15 +114,18 @@ public class WordBubble : MonoBehaviour
         _completed = true;
         float attemptCrit = Random.Range(0f, 1f);
         bool didCrit = attemptCrit < _critChance;
+        int damage =  didCrit ? _rewardAmount * 2 : _rewardAmount;
         DocumentPage.Instance?.AddWords(didCrit ? _rewardAmount * 2 : _rewardAmount);
         PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
         if (!didCrit){
             RectTransform explosion = Instantiate(TextExplosion, transform.parent);
             explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            explosion.GetComponent<TextExplosion>().text.text = "+"+damage;
         }
         else{
             RectTransform explosion = Instantiate(CritExplosion, transform.parent);
             explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            explosion.GetComponent<TextExplosion>().text.text = "+"+damage;
         }
         _seq.Kill();
         Destroy(gameObject);
