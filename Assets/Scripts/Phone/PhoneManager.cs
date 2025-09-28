@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
-namespace Reels
+namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
@@ -17,6 +17,9 @@ namespace Reels
         [SerializeField] private int verticalOffset = -1610;
         [SerializeField] private int maxQueueSize = 3;
         [SerializeField] private float swipeCooldown = 0.3f;
+        [SerializeField] private Button raiseButton;
+        [SerializeField] private Button lowerButton;
+        [SerializeField] private InactiveScreen inactiveScreen;
 
         private bool _isSwiped = false;
         private bool _isActive = false;
@@ -27,12 +30,22 @@ namespace Reels
         {
             if (phoneRect == null)
                 phoneRect = GetComponent<RectTransform>();
-        }
-
-        public void Start()
-        {
+            
             _originalPosition = phoneRect.anchoredPosition;
-            Debug.Log(_originalPosition);
+
+            raiseButton.onClick.AddListener(() =>
+            {
+                raiseButton.interactable = false;
+                lowerButton.interactable = true;
+                OpenPhone();
+            });
+            
+            lowerButton.onClick.AddListener(() =>
+            {
+                lowerButton.interactable = false;
+                raiseButton.interactable = true;
+                ClosePhone();
+            });
         }
 
         public bool IsActive()
@@ -51,19 +64,18 @@ namespace Reels
             
             _isActive = true;
             
-            Debug.Log(_originalPosition);
-
+            inactiveScreen.Hide();
         }
 
         public void ClosePhone()
         {
-            Debug.Log(_originalPosition);
-            
+            inactiveScreen.Show();
+
             _isActive = false;
             
             phoneRect.DOAnchorPos(_originalPosition, animationDuration).SetEase(Ease.OutCubic);
             
-            // ClearAllReels();
+            ClearAllReels();
         }
 
         public void Swipe()

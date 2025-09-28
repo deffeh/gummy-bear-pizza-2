@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Reels
+namespace Phone
 {
     public class PhoneSwipeHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {

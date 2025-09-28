@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 8313575790965304843}
   - component: {fileID: 1305743619264953171}
   - component: {fileID: 6908159954157333862}
-  - component: {fileID: 8227162496638165510}
   m_Layer: 5
   m_Name: DropPhoneButton
   m_TagString: Untagged
@@ -257,41 +256,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1305743619264953171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 94942750646034428, guid: 6ee7d8b44c0770349909d31b62594f20, type: 3}
-        m_TargetAssemblyTypeName: Reels.PhoneManager, Assembly-CSharp
-        m_MethodName: ClosePhone
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5393825452221573540, guid: 670e9f2a5c4b23c46bc15573ef1efc97, type: 3}
-        m_TargetAssemblyTypeName: Reels.TwoButtonToggle, Assembly-CSharp
-        m_MethodName: OnButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8227162496638165510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4264165461782098480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbd7ba4d4aa48243b60781f1d770396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherButton: {fileID: 0}
+      m_Calls: []
