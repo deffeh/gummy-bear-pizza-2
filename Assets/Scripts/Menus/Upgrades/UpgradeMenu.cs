@@ -23,7 +23,7 @@ namespace Menus.Upgrades
         [SerializeField] private float longerThoughtsUpgradeAmount = 0.5f;
         [SerializeField] private float criticalThinkingUpgradeAmount = 0.05f;
         [SerializeField] private float energyRegenUpgradeAmount = 2.5f;
-        [SerializeField] private int wordsTypedUpgradeAmount = 5;
+        [SerializeField] private float wordsTypedUpgradeAmount = 5;
         [SerializeField] private int lessTimeLossUpgradeAmount = 1;
         
         public void Start()
@@ -78,9 +78,7 @@ namespace Menus.Upgrades
 
         public void UpgradeMoreThoughts()
         {
-            Debug.Log("More thoughts!");
-
-            WordManager.Instance._baseBubbleRate -= moreThoughtsUpgradeAmount;
+            WordManager.Instance._baseBubbleRate = Mathf.Max(0.05f, WordManager.Instance._baseBubbleRate *= moreThoughtsUpgradeAmount);
 
             moreThoughtsUpgrade.upgradeLevel++;
             PlayerManager.Instance.moreThoughtsLevel = moreThoughtsUpgrade.upgradeLevel;
@@ -90,9 +88,7 @@ namespace Menus.Upgrades
 
         public void UpgradeLongerThoughts()
         {
-            Debug.Log("Longer thoughts!");
-            
-            WordManager.Instance._bubbleDuration += longerThoughtsUpgradeAmount;
+            WordManager.Instance._bubbleDuration *= longerThoughtsUpgradeAmount;
             
             longerThoughtsUpgrade.upgradeLevel++;
             PlayerManager.Instance.longerThoughtsLevel = longerThoughtsUpgrade.upgradeLevel;
@@ -102,8 +98,6 @@ namespace Menus.Upgrades
 
         public void UpgradeCriticalThinking()
         {
-            Debug.Log("Critical thinking!");
-            
             WordManager.Instance._critChance += criticalThinkingUpgradeAmount;
             
             criticalThinkingUpgrade.upgradeLevel++;
@@ -112,14 +106,13 @@ namespace Menus.Upgrades
             criticalThinkingUpgrade.UpdateStatInfo();
         }
 
+
         public void UpgradeEnergyRegen()
         {
-            Debug.Log("Energy regen!");
+            GainMultiplierReel.energyRegenAmount *= energyRegenUpgradeAmount;
+            DoNothingReel.energyRegenAmount *= energyRegenUpgradeAmount;
+            GainMultiplierReel.energyRegenAmount *= energyRegenUpgradeAmount;
 
-            GainMultiplierReel.energyRegenAmount += energyRegenUpgradeAmount;
-            DoNothingReel.energyRegenAmount += energyRegenUpgradeAmount;
-            GainMultiplierReel.energyRegenAmount += energyRegenUpgradeAmount;
-            
             energyRegenUpgrade.upgradeLevel++;
             PlayerManager.Instance.energyRegenLevel = energyRegenUpgrade.upgradeLevel;
             SpendMoney(energyRegenUpgrade.upgradeCost);
@@ -128,9 +121,7 @@ namespace Menus.Upgrades
 
         public void UpgradeWordsTyped()
         {
-            Debug.Log("Words typed!");
-            
-            WordManager.Instance._rewardWordsPerBubble += wordsTypedUpgradeAmount;
+            WordManager.Instance._rewardWordsPerBubble = Mathf.CeilToInt(WordManager.Instance._rewardWordsPerBubble * wordsTypedUpgradeAmount);
             
             wordsTypedUpgrade.upgradeLevel++;
             PlayerManager.Instance.wordsTypedLevel = wordsTypedUpgrade.upgradeLevel;
@@ -140,8 +131,6 @@ namespace Menus.Upgrades
 
         public void UpgradeLessTimeLoss()
         {
-            Debug.Log("Less time loss!");
-            
             Reel.timeLostPerReel -= lessTimeLossUpgradeAmount;
             
             lessTimeLossUpgrade.upgradeLevel++;

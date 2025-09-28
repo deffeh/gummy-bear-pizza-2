@@ -1,3 +1,4 @@
+using Phone;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
@@ -7,6 +8,8 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         DestroyAllGameSingletons();
+        Reel.timeLostPerReel = 3;
+        Application.targetFrameRate = 60;
     }
 
     public void OnStartButtonClicked()

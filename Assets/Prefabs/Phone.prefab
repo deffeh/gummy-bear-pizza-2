@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87caf537a365e4b4c90596853b6ff8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TextPrefab: {fileID: 5246897028018183153, guid: 0a87f8e5e9c8f864087236939725b190, type: 3}
   phoneRect: {fileID: 7855642138667519783}
   screen: {fileID: 311535457929748073}
   reelPrefabs:

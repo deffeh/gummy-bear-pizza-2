@@ -23,7 +23,6 @@ public class LoadingScreen : MonoBehaviour
         Instance = this;
         SceneManager.sceneLoaded += Hide;
         DontDestroyOnLoad(gameObject);
-        Application.targetFrameRate = 60;
     }
 
     private void OnDestroy()
@@ -68,6 +67,6 @@ public class LoadingScreen : MonoBehaviour
     
     private string GetRandomBodyText()
     {
-        return "stoopid";
+        return "";
     }
 }

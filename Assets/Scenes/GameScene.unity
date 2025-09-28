@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wordBubblePrefab: {fileID: 6725540151471036773, guid: 04f44891495e9dc4dbb6512e40512225, type: 3}
   _bubbleDuration: 5
-  _bubbleRate: 2
+  _bubbleRate: 1.75
   _rewardWordsPerBubble: 25
   _textFiles:
   - {fileID: 4900000, guid: 6bd2aaf336c711d47922b0db50761d1a, type: 3}
@@ -598,7 +598,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 5fbf183afa0e2364fa0d4a93f23b1763, type: 3}
   - {fileID: 4900000, guid: eb97c871571a6f94cbf46d01aee4b8e5, type: 3}
   _critChance: 0.05
-  _baseBubbleRate: 0
+  _baseBubbleRate: 1.75
 --- !u!114 &279055104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4233,7 +4233,7 @@ MonoBehaviour:
   _firstONe: {fileID: 1830566509}
   _secondONe: {fileID: 936708818}
   _thirdONe: {fileID: 144151964}
-  WordsToWin: 600
+  WordsToWin: 500
   RoundOver: 0
 --- !u!1 &2262814033102155002
 GameObject:
