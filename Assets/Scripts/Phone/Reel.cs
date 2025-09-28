@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,8 @@ namespace Phone
     public abstract class Reel : MonoBehaviour
     {
         [SerializeField] private Texture2D[] textures;
-
+        [SerializeField] public static int timeLostPerReel = 3;
+        public string ActivateText = "";
         public void Initialize()
         {
             if (textures.Length <= 0) return;
@@ -20,6 +22,13 @@ namespace Phone
             if (imageComponent != null) imageComponent.sprite = sprite;
         }
 
-        public abstract void OnActivate();
+        public virtual void OnActivate()
+        {
+            if (PhoneManager.Instance.TextPrefab)
+            {
+                TextMeshProUGUI newText = Instantiate(PhoneManager.Instance.TextPrefab, transform.parent);
+                newText.text = ActivateText;
+            }
+        }
     }
 }

@@ -28,9 +28,8 @@ public class UpgradeSceneFlow : MonoBehaviour
         _RANK.text = rank;
 
         var seq = DOTween.Sequence();
-        seq.AppendInterval(3f);
         seq.AppendCallback(() => _panelOne.SetActive(true));
-        seq.AppendInterval(8f);
+        seq.AppendInterval(2f);
         seq.AppendCallback(() => { _timeRemainTitle.SetActive(true); _panelOne.SetActive(false); });
         float stepDur = 1.5f;
         seq.AppendInterval(stepDur);
@@ -91,13 +90,13 @@ public class UpgradeSceneFlow : MonoBehaviour
         switch (rank)
         {
             case "A":
-                return 750;
+                return 650;
             case "B":
                 return 500;
             case "C":
-                return 250;
+                return 350;
             case "D":
-                return 100;
+                return 150;
             default:
                 return 0;
         }

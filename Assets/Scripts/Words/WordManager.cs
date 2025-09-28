@@ -7,13 +7,14 @@ public class WordManager : MonoBehaviour
 {
     public static WordManager Instance;
     [SerializeField] private WordBubble _wordBubblePrefab;
-    [SerializeField] private float _bubbleDuration;
-    [SerializeField] private float _bubbleRate;
-    [SerializeField] private int _rewardWordsPerBubble;
+    [SerializeField] public float _bubbleDuration;
+    [SerializeField] public float _bubbleRate;
+    [SerializeField] public int _rewardWordsPerBubble;
     [SerializeField] private List<TextAsset> _textFiles;
+    [SerializeField] public float _critChance = 0.05f;
     private List<List<string>> _listOfListsOfWords;
-    private float _wordLength;
-    private float _baseBubbleRate;
+    private int _round;
+    public float _baseBubbleRate;
 
     private int _rewardMultiplier = 1;
     private float _multiplierDuration = 0.0f;
@@ -32,13 +33,13 @@ public class WordManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         LoadAllWords();
         _baseBubbleRate = _bubbleRate;
-        Init();
     }
 
-    public void Init()
+    public void Init(int round)
     {
         //based off round and stats, set bubble rate, duration, damage here?
-        // gameObject.SetActive(true);
+        _round = round;
+        _bubbleRate = Random.Range(0.25f, 0.75f);
     }
 
 
@@ -49,7 +50,18 @@ public class WordManager : MonoBehaviour
         _bubbleRate -= Time.deltaTime;
         if (_bubbleRate <= 0)
         {
-            _bubbleRate = _baseBubbleRate;
+            float ratio = PlayerManager.Instance.GetCurHPPercent();
+            float rateMultiplier = 1f;
+            if (ratio < 0.33f)
+            {
+                rateMultiplier = 1.6f;
+            }
+            else if (ratio < 0.66f)
+            {
+                rateMultiplier = 1.25f;
+            }
+            
+            _bubbleRate = _baseBubbleRate * rateMultiplier;
             InstantiateBubble();
         }
 
@@ -63,8 +75,26 @@ public class WordManager : MonoBehaviour
 
     public void InstantiateBubble()
     {
+        float multiplier = GetDurationMultiplierForRound(_round);
+        float tiredMultiplier = 1f;
+        float playerTired = PlayerManager.Instance.GetCurHPPercent();
+        float tiredRewardMulti = 1f;
+        if (playerTired < 0.33f)
+        {
+            tiredMultiplier = 0.4f;
+            tiredRewardMulti = 0.75f;
+        }
+        else if (playerTired < 0.66f)
+        {
+            tiredMultiplier = 0.7f;
+            tiredRewardMulti = 0.9f;
+        }
+        var dur = Mathf.Max(_bubbleDuration * multiplier * tiredMultiplier, 1f);
+        bool isNegative = Random.Range(0, 2) == 0;
+        int slightRandomRewardWords = (isNegative ? -1 : 1) * Random.Range(0, _rewardWordsPerBubble / 8);
+        
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble * _rewardMultiplier);
+        bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, Mathf.CeilToInt((_rewardWordsPerBubble + slightRandomRewardWords) * tiredRewardMulti * _rewardMultiplier), _critChance);
         PlaceBubbleRandomly(bubbleFab);
     }
 
@@ -81,9 +111,50 @@ public class WordManager : MonoBehaviour
         float yMax = (containerSize.y / 2f) - (bubbleSize.y / 2f) - yPadding;
 
         float randomX = Random.Range(xMin, xMax);
+        if (randomX < -containerSize.x / 7f) { yMin += containerSize.y / 5f; }
         float randomY = Random.Range(yMin, yMax);
         bubbleFab.GetComponent<RectTransform>().SetLocalPositionAndRotation(new Vector2(randomX, randomY), Quaternion.identity);
     }
+
+    private int GetWordLengthForRound(int round)
+    {
+        float random = Random.Range(0f, 1f);
+        switch (round)
+        {
+            case 1:
+                if (random > 0.4f) { return 3; }
+                else { return 4; }
+            case 2:
+                if (random > 0.6) { return 4; }
+                else if (random > 0.3) { return 3; }
+                else { return 5; }
+            case 3:
+                if (random > 0.6) { return 4; }
+                else if (random > 0.3) { return 5; }
+                else { return 6; }
+            default:
+                if (random > 0.4) { return 6; }
+                else if (random > 0.15) { return 5; }
+                else {return Random.Range(3, 5); }
+        }
+    }
+
+    private float GetDurationMultiplierForRound(int round)
+    {
+        switch (round)
+        {
+            case 1:
+                return 1f;
+            case 2:
+                return 0.85f;
+            case 3:
+                return 0.6f;
+            case 4:
+                return 0.4f;
+            default:
+                return 0.4f * Mathf.Pow(0.8f, round - 4);
+        }
+    }    
 
     private string GetRandomWordOfLength(int wordLength)
     {
@@ -117,7 +188,7 @@ public class WordManager : MonoBehaviour
 
     public void GainRewardMultiplier()
     {
-        _rewardMultiplier *= 2; // change this to read from upgrades if we have an upgrade that modifies the multiplier
+        _rewardMultiplier++; // change this to read from upgrades if we have an upgrade that modifies the multiplier
         _multiplierDuration = 15.0f; // change this to read from upgrades if we have an upgrade that modifies the duration
         CritMeter.SetMultMeter(_rewardMultiplier, _multiplierDuration);
     }

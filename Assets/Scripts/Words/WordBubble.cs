@@ -31,18 +31,19 @@ public class WordBubble : MonoBehaviour
         ResetWord();
     }
 
-    public void Init(string word, float lifetime, int rewardAmount)
+    public void Init(string word, float lifetime, int rewardAmount, float critChance)
     {
         _word = word.Trim();
         if (word.Length > 3) { ResizeBubble(word.Length); }
         _lifetime = lifetime;
         _curWordIndex = 0;
         _rewardAmount = rewardAmount;
+        _critChance = critChance;
         ResetWord();
         _rectTrans.localScale = Vector2.zero;
         _seq = DOTween.Sequence().SetEase(Ease.InOutQuad);
-        _seq.Append(_rectTrans.DOScale(1.1f, 0.75f));
-        _seq.Append(_rectTrans.DOScale(1f, 1f));
+        _seq.Append(_rectTrans.DOScale(1.1f, lifetime / 8f));
+        _seq.Append(_rectTrans.DOScale(1f, lifetime / 8f));
         _seq.Play();
     }
 
@@ -113,15 +114,18 @@ public class WordBubble : MonoBehaviour
         _completed = true;
         float attemptCrit = Random.Range(0f, 1f);
         bool didCrit = attemptCrit < _critChance;
+        int damage =  didCrit ? _rewardAmount * 2 : _rewardAmount;
         DocumentPage.Instance?.AddWords(didCrit ? _rewardAmount * 2 : _rewardAmount);
         PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
         if (!didCrit){
             RectTransform explosion = Instantiate(TextExplosion, transform.parent);
             explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            explosion.GetComponent<TextExplosion>().text.text = "+"+damage;
         }
         else{
             RectTransform explosion = Instantiate(CritExplosion, transform.parent);
             explosion.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            explosion.GetComponent<TextExplosion>().text.text = "+"+damage;
         }
         _seq.Kill();
         Destroy(gameObject);

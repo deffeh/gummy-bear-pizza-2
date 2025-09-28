@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
+        public TextMeshProUGUI TextPrefab;
         public static PhoneManager Instance;
         [SerializeField] private RectTransform phoneRect;        
         [SerializeField] private RectTransform screen;           
@@ -21,6 +23,7 @@ namespace Phone
         [SerializeField] private Button raiseButton;
         [SerializeField] private Button lowerButton;
         [SerializeField] private InactiveScreen inactiveScreen;
+        [SerializeField] private GameObject _hand;
 
         private bool _isSwiped = false;
         private bool _isActive = false;
@@ -92,7 +95,7 @@ namespace Phone
         public void Swipe()
         {
             if (_isSwiped || !_isActive) return;
-            
+            _hand.SetActive(false);
             _isSwiped = true;
             
             StartCoroutine(SwipeCooldownRoutine());
@@ -132,6 +135,12 @@ namespace Phone
                         });
                 }
             }
+            
+            // Add time to timer
+            GameManager.Instance._gameTimer -= Reel.timeLostPerReel;
+            
+            // Activate reel effect
+            _reelQueue.Peek()?.OnActivate();
         }
 
         private IEnumerator SwipeCooldownRoutine()

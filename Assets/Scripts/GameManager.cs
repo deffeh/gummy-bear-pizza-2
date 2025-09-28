@@ -12,8 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RectTransform _timesUpText;
     
     [SerializeField] private TMP_Text _stickyNoteText;
-    [SerializeField] private float _gameTimer = 180f;
+    [SerializeField] public float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
+    [SerializeField] private CanvasGroup _firstONe;
+    [SerializeField] private CanvasGroup _secondONe;
+    [SerializeField] private CanvasGroup _thirdONe;
+
     private float _baseTime;
     public int WordsToWin = 1000;
     public bool RoundOver = true;
@@ -112,12 +116,33 @@ public class GameManager : MonoBehaviour
     public void InitializeRound()
     {
         SetWC(0);
+        RoundOver = true;
+        int round = PlayerManager.Instance.round;
+        WordsToWin = Mathf.CeilToInt(WordsToWin * Mathf.Pow(1.75f, round - 1));
         _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
         PlayerManager.Instance.InstantSetHPToMax();
-        WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
-        //start intro cutscene?
-        _gameTimer = _baseTime;
-        RoundOver = false;
+
+        _firstONe.GetComponent<RectTransform>().localScale = Vector2.zero;
+        _secondONe.GetComponent<RectTransform>().localScale = Vector2.zero;
+        _secondONe.GetComponent<TMP_Text>().text = $"{WordsToWin} WORDS DUE AT MIDNIGHT";  
+        _thirdONe.GetComponent<RectTransform>().localScale = Vector2.zero;
+
+        var seq = DOTween.Sequence();
+        seq.AppendInterval(1f);
+        seq.Append(_firstONe.GetComponent<RectTransform>().DOScale(8f, 2.5f));
+        seq.Join(_firstONe.DOFade(0f, 1f).SetDelay(1.5f));
+        seq.Append(_secondONe.GetComponent<RectTransform>().DOScale(4f, 2.5f));
+        seq.Join(_secondONe.DOFade(0f, 1f).SetDelay(1.5f));
+        seq.Append(_thirdONe.GetComponent<RectTransform>().DOScale(1f, 1f));
+        seq.Join(_thirdONe.DOFade(1f, 0.5f));
+        seq.OnComplete(() =>
+        {
+            WordManager.Instance?.Init(PlayerManager.Instance.round);
+            _gameTimer = _baseTime;
+            RoundOver = false;
+            _thirdONe.DOFade(0f, 2f);
+        });
+        seq.Play();
     }
 
     public string GetTime()
