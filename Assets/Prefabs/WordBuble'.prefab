@@ -81,11 +81,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a969b9461e9d744865a78fa3167621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TextExplosion: {fileID: 2484405430598802490, guid: c6a6305a23310924f8a86a3c00adf5ed, type: 3}
   _text: {fileID: 5074824612551288593}
   _lifetime: 100
   _word: asdf
   _rewardAmount: 100
   _critChance: 0
+  _fatigueAmount: 10
 --- !u!222 &1773068889418072778
 CanvasRenderer:
   m_ObjectHideFlags: 0
