@@ -78,20 +78,23 @@ public class WordManager : MonoBehaviour
         float multiplier = GetDurationMultiplierForRound(_round);
         float tiredMultiplier = 1f;
         float playerTired = PlayerManager.Instance.GetCurHPPercent();
+        float tiredRewardMulti = 1f;
         if (playerTired < 0.33f)
         {
             tiredMultiplier = 0.4f;
+            tiredRewardMulti = 0.75f;
         }
         else if (playerTired < 0.66f)
         {
             tiredMultiplier = 0.7f;
+            tiredRewardMulti = 0.9f;
         }
         var dur = Mathf.Max(_bubbleDuration * multiplier * tiredMultiplier, 1f);
         bool isNegative = Random.Range(0, 2) == 0;
         int slightRandomRewardWords = (isNegative ? -1 : 1) * Random.Range(0, _rewardWordsPerBubble / 8);
         
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, (_rewardWordsPerBubble + slightRandomRewardWords) * _rewardMultiplier, _critChance);
+        bubbleFab.Init(GetRandomWordOfLength(GetWordLengthForRound(_round)), dur, Mathf.CeilToInt((_rewardWordsPerBubble + slightRandomRewardWords) * tiredRewardMulti * _rewardMultiplier), _critChance);
         PlaceBubbleRandomly(bubbleFab);
     }
 
