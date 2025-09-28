@@ -37,7 +37,7 @@ namespace Menus.Upgrades
             LessTimeLossUpgrade.upgradeButton.onClick.AddListener(UpgradeLessTimeLoss);
             GoToNextLevelButton.onClick.AddListener(() =>
             {
-                LoadingScreen.Instance.LoadNextRound(GameManager.Instance._round++);
+                LoadingScreen.Instance.LoadNextRound(++PlayerManager.Instance.round);
             });
             
             MoreThoughtsUpgrade.UpdateStatInfo();

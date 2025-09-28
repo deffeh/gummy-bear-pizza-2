@@ -31,19 +31,20 @@ public class WordManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         LoadAllWords();
+        _baseBubbleRate = _bubbleRate;
         Init();
     }
 
     public void Init()
     {
-        _baseBubbleRate = _bubbleRate;
-        gameObject.SetActive(true);
+        //based off round and stats, set bubble rate, duration, damage here?
+        // gameObject.SetActive(true);
     }
 
 
     private void Update()
     {
-        if (PhoneManager.Instance != null && PhoneManager.Instance.IsActive()){ return; }
+        if (PhoneManager.Instance == null || PhoneManager.Instance.IsActive() || GameManager.Instance == null || GameManager.Instance.RoundOver){ return; }
 
         _bubbleRate -= Time.deltaTime;
         if (_bubbleRate <= 0)

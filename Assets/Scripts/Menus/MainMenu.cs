@@ -30,7 +30,6 @@ public class MainMenu : MonoBehaviour
     private void DestroyAllGameSingletons()
     {
         //to reset the game state
-        if (GameManager.Instance != null) { Destroy(GameManager.Instance.gameObject); }
         if (WordManager.Instance != null) { Destroy(WordManager.Instance.gameObject); }
         if (PlayerManager.Instance != null) { Destroy(PlayerManager.Instance.gameObject); }
     }

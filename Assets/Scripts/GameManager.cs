@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _stickyNoteText;
     [SerializeField] private float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
-    public int _round = 0;
     private float _baseTime;
     public int WordsToWin = 1000;
     public bool RoundOver = true;
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
         _baseTime = _gameTimer;
     }
 
@@ -68,11 +66,10 @@ public class GameManager : MonoBehaviour
     {
         //stop everything
         RoundOver = true;
-        WordManager.Instance.gameObject.SetActive(false); //stop bubble instantiations
 
         if (win)
         {
-            _wordCount.text = $"WC: {WordsToWin}";
+            SetWC(WordsToWin);
             _finishedText.localScale = Vector2.zero;
             _finishedText.gameObject.SetActive(true);
             var seq = DOTween.Sequence();
@@ -90,16 +87,15 @@ public class GameManager : MonoBehaviour
         else
         {
             //go to main menu?
-            _round = 0;
             LoadingScreen.Instance.LoadScene("MainMenu", "", "", 0);
         }
     }
 
     public void InitializeRound()
     {
-        _round++;
         SetWC(0);
         _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
+        PlayerManager.Instance.InstantSetHPToMax();
         WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
         //start intro cutscene?
         _gameTimer = _baseTime;

@@ -48,7 +48,13 @@ public class WordBubble : MonoBehaviour
 
     public void Update()
     {
-        if (GameManager.Instance.RoundOver) { return; }
+        if (!GameManager.Instance || GameManager.Instance.RoundOver)
+        {
+            _lifetime = 0;
+            _seq.Kill();
+            Destroy(gameObject);
+            return;
+        }
 
         //Get all keyboard input
         if (Input.anyKeyDown)

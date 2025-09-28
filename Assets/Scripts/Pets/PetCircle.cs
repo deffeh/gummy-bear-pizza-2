@@ -24,7 +24,7 @@ public class PetCircle : MonoBehaviour
 
     private void Update()
     {
-        if (_petObject == null || GameManager.Instance.RoundOver || !PlayerManager.Instance) { return; }
+        if (_petObject == null || !GameManager.Instance || GameManager.Instance.RoundOver || !PlayerManager.Instance) { return; }
         var hpPercent = PlayerManager.Instance.GetCurHPPercent();
         _petFace.sprite = _petObject.GetFace(hpPercent);
     }
