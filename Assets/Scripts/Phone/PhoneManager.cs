@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Phone
 {
     public class PhoneManager : MonoBehaviour
     {
+        public TextMeshProUGUI TextPrefab;
         public static PhoneManager Instance;
         [SerializeField] private RectTransform phoneRect;        
         [SerializeField] private RectTransform screen;           
