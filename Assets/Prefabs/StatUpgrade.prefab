@@ -542,7 +542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9045379739985935626}
   - component: {fileID: 7385298932778960435}
-  - component: {fileID: 3626843233686318509}
+  - component: {fileID: 8251687511176729958}
   m_Layer: 5
   m_Name: StatUpgrade
   m_TagString: Untagged
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &3626843233686318509
+--- !u!114 &8251687511176729958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -609,11 +609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e24e868242f2ac47b8645540eb38af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeName: More Thoughts
+  upgradeName: Default name
   upgradeCost: 50
   upgradeLevel: 1
   nameAndLevelText: {fileID: 7595368240555151094}
   costText: {fileID: 3610594114548802560}
+  upgradeButton: {fileID: 7995617617530851699}
 --- !u!1 &7650100850724406757
 GameObject:
   m_ObjectHideFlags: 0

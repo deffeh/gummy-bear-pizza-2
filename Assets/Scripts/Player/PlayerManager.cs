@@ -8,6 +8,14 @@ public class PlayerManager : MonoBehaviour
     public float MaxFatigue = 100;
     private float curFatigue = 100;
     public EnergyBar Bar;
+
+    public int totalMoney = 0;
+    public int moreThoughtsLevel = 1;
+    public int longerThoughtsLevel = 1;
+    public int criticalThinkingLevel = 1;
+    public int energyRegenLevel = 1;
+    public int wordsTypedLevel = 1;
+    public int lessTimeLossLevel = 1;
     void Awake()
     {
         if (Instance == null)
