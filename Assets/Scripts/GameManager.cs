@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _roundText;
     [SerializeField] private TMP_Text _wordCount;
     [SerializeField] private RectTransform _finishedText;
+    [SerializeField] private TMP_Text _stickyNoteText;
     [SerializeField] private float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
     private int _round = 0;
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
     public void InitializeRound()
     {
         _round++;
+        _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT"; 
         WordManager.Instance?.Init(); //stop bubble instantiations, pass in rounds to handle difficulty scaling
         //start intro cutscene?
         _gameTimer = _baseTime;
