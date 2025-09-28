@@ -7,6 +7,7 @@ public class CritMeter : MonoBehaviour
 {
     public static CritMeter Instance;
     public Image Meter;
+    public Image Fire;
     public TextMeshProUGUI MultText;
     public AnimationCurve ScaleCurve;
     public AnimationCurve RotationCurve;
@@ -17,35 +18,37 @@ public class CritMeter : MonoBehaviour
     private float startScale = 1;
     private float curDuration = 0;
     private float maxDuration = 1;
+    public AnimationCurve FireFade;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (Instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
         Meter.fillAmount = 0;
         MultText.text = "";
         startScale = transform.localScale.x;
+        Fire.color = Color.clear;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (maxDuration != 0)
+        if (curDuration > 0 && maxDuration != 0)
         {
             Meter.fillAmount = curDuration / maxDuration;
             curDuration -= Time.deltaTime;
-            Meter.color = ColorGradient.Evaluate(curDuration/maxDuration);
-            MultText.color = ColorGradient.Evaluate(curDuration / maxDuration);
+            float f = curDuration / maxDuration;
+            Meter.color = ColorGradient.Evaluate(f);
+            MultText.color = ColorGradient.Evaluate(f);
+            Fire.color = new Color(1, 1, 1, ColorGradient.Evaluate(f).a);
+            if (curDuration <= 0)
+            {
+                ResetMeter();
+            }
         }
 
         // if (Input.GetKeyDown(KeyCode.Space))
         // {
-        //     SetMeter(2, 15);
+        //     SetMeter(2, 5);
         // }
     }
 
@@ -54,6 +57,7 @@ public class CritMeter : MonoBehaviour
         Meter.fillAmount = 0;
         MultText.text = "";
         curDuration = 0;
+        Fire.color = Color.clear;
     }
 
     public static void SetMultMeter(float inMult, float inDuration)
