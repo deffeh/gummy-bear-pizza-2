@@ -116,6 +116,7 @@ public class WordBubble : MonoBehaviour
         float attemptCrit = Random.Range(0f, 1f);
         bool didCrit = attemptCrit < _critChance;
         int damage =  didCrit ? _rewardAmount * 2 : _rewardAmount;
+        if (WordManager.Instance) { damage *= WordManager.Instance._rewardMultiplier; }
         DocumentPage.Instance?.AddWords(didCrit ? _rewardAmount * 2 : _rewardAmount);
         PlayerManager.Instance?.UpdateEnergy(-_fatigueAmount);
         if (!didCrit){
