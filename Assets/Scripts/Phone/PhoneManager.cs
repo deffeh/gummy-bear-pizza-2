@@ -132,6 +132,9 @@ namespace Phone
                         });
                 }
             }
+            
+            // Add time to timer
+            GameManager.Instance._gameTimer -= Reel.timeLostPerReel;
         }
 
         private IEnumerator SwipeCooldownRoutine()

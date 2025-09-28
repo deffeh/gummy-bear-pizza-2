@@ -11,6 +11,7 @@ public class WordManager : MonoBehaviour
     [SerializeField] public float _bubbleRate;
     [SerializeField] public int _rewardWordsPerBubble;
     [SerializeField] private List<TextAsset> _textFiles;
+    [SerializeField] public float _critChance = 0.05f;
     private List<List<string>> _listOfListsOfWords;
     private float _wordLength;
     private float _baseBubbleRate;
@@ -64,7 +65,7 @@ public class WordManager : MonoBehaviour
     public void InstantiateBubble()
     {
         WordBubble bubbleFab = Instantiate(_wordBubblePrefab, transform);
-        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble * _rewardMultiplier);
+        bubbleFab.Init(GetRandomWordOfLength(Random.Range(3, 7)), _bubbleDuration, _rewardWordsPerBubble * _rewardMultiplier, _critChance);
         PlaceBubbleRandomly(bubbleFab);
     }
 

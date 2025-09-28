@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RectTransform _timesUpText;
     
     [SerializeField] private TMP_Text _stickyNoteText;
-    [SerializeField] private float _gameTimer = 180f;
+    [SerializeField] public float _gameTimer = 180f;
     [SerializeField] private float _wordCountLerpSpeed;
     private float _baseTime;
     public int WordsToWin = 1000;

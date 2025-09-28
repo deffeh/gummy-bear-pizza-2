@@ -21,10 +21,10 @@ namespace Menus.Upgrades
 
         [SerializeField] private float moreThoughtsUpgradeAmount = 0.2f;
         [SerializeField] private float longerThoughtsUpgradeAmount = 0.5f;
-        [SerializeField] private float criticalThinkingUpgradeAmount;
+        [SerializeField] private float criticalThinkingUpgradeAmount = 0.05f;
         [SerializeField] private float energyRegenUpgradeAmount = 2.5f;
         [SerializeField] private int wordsTypedUpgradeAmount = 5;
-        [SerializeField] private float lessTimeLossUpgradeAmount;
+        [SerializeField] private int lessTimeLossUpgradeAmount = 1;
         
         public void Start()
         {
@@ -104,7 +104,7 @@ namespace Menus.Upgrades
         {
             Debug.Log("Critical thinking!");
             
-            // ???
+            WordManager.Instance._critChance += criticalThinkingUpgradeAmount;
             
             criticalThinkingUpgrade.upgradeLevel++;
             PlayerManager.Instance.criticalThinkingLevel = criticalThinkingUpgrade.upgradeLevel;
@@ -142,7 +142,7 @@ namespace Menus.Upgrades
         {
             Debug.Log("Less time loss!");
             
-            // ???
+            Reel.timeLostPerReel -= lessTimeLossUpgradeAmount;
             
             lessTimeLossUpgrade.upgradeLevel++;
             PlayerManager.Instance.lessTimeLossLevel = lessTimeLossUpgrade.upgradeLevel;
