@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 2763648512867934983}
   - component: {fileID: 5712043275349365344}
   - component: {fileID: 9060503722026156248}
+  - component: {fileID: -1762087853655635412}
   m_Layer: 0
   m_Name: ResetMultiplierReel
   m_TagString: Untagged
@@ -151,3 +152,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-1762087853655635412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306409521401694118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fb0e62651227a49b0ba137b127797d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures:
+  - {fileID: 2800000, guid: 6d0ec136c226b544d91dffeb39c28c0b, type: 3}
+  - {fileID: 2800000, guid: b6d24f94e8c6a774197697e48ddbb4e2, type: 3}
+  - {fileID: 2800000, guid: 983c047e7f0288149bb52e2d5832e82c, type: 3}
+  - {fileID: 2800000, guid: f38d036b3c755974b9438b091314ec61, type: 3}
+  ActivateText: 
+  index: 3
