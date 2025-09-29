@@ -46,7 +46,7 @@ public class WordManager : MonoBehaviour
 
     private void Update()
     {
-        if (PhoneManager.Instance == null || PhoneManager.Instance.IsActive() || GameManager.Instance == null || GameManager.Instance.RoundOver){ return; }
+        if (PlayerManager.Instance == null || GameManager.Instance == null || GameManager.Instance.RoundOver){ return; }
 
         _bubbleRate -= Time.deltaTime;
         if (_bubbleRate <= 0)
