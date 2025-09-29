@@ -20,6 +20,7 @@ public class UpgradeSceneFlow : MonoBehaviour
 
     public void Awake()
     {
+        if (PlayerManager.Instance) { PlayerManager.Instance.SetBarActive(false); }
         //calculate remaining time and rank
         TimeSpan remainingTime = PlayerManager.Instance.remainingTime;
         TimeSpan maxTime = PlayerManager.Instance.maxTime;

@@ -64,4 +64,9 @@ public class PlayerManager : MonoBehaviour
     {
         return curFatigue / MaxFatigue;
     }
+
+    public void SetBarActive(bool act)
+    {
+        Bar.gameObject.SetActive(act);
+    }
 }

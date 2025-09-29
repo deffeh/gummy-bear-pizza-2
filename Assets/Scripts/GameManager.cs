@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
         }
         _stickyNoteText.text = $"{WordsToWin} WORDS DUE MIDNIGHT";
         PlayerManager.Instance.InstantSetHPToMax();
+        PlayerManager.Instance.SetBarActive(true);
 
         _firstONe.GetComponent<RectTransform>().localScale = Vector2.zero;
         _secondONe.GetComponent<RectTransform>().localScale = Vector2.zero;
