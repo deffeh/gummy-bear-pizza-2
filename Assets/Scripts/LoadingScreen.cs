@@ -68,7 +68,7 @@ public class LoadingScreen : MonoBehaviour
     }
     private List<string> fuckBitches = new List<string>()
     {
- "You played Bald Guys 3 all week, died to the barber, ended your for haironour run.",
+ "You played Bald Guys 3 all week, died to the barber, and ended your for haironour run.",
     "You spilled orange juice on your laptop and had to miss your capstone presentation.",
 "BilkBong released and you skipped all of your classes. Did you even play the first one?",
     "You were too busy playing [NAME OF OUR GAME] and forgot to charge your laptop.",

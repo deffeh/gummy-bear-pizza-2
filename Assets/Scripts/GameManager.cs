@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         SetWC(0);
         RoundOver = true;
         int round = PlayerManager.Instance.round;
-        WordsToWin = Mathf.CeilToInt(WordsToWin * Mathf.Pow(1.75f, round - 1));
+        WordsToWin = Mathf.CeilToInt(WordsToWin * Mathf.Pow(1.5f, round - 1));
         if (round == 1)
         {
             WordsToWin = 300;
