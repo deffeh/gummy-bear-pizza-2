@@ -239,10 +239,10 @@ namespace Phone
         {
             // make sure the order of reel prefabs is [0]reset multiplier, [1]gain multiplier, [2]gain energy, [3]do nothing
             float r = Random.value;
-            if (r < 0.10f) return 0; // 5% for reset multipier
+            if (r < 0.05f) return 0; // 5% for reset multipier
             if (r < 0.20f) return 1; // 20% for gain multiplier
             if (r < 0.50f) return 2; // 50% for gain energy
-            return 3; // 60% for do nothing
+            return 3; // 25% for do nothing
         }
         
         private void ClearAllReels()
