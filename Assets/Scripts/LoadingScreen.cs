@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -65,9 +66,21 @@ public class LoadingScreen : MonoBehaviour
     {
         LoadScene("GameScene", "Week " + round, GetRandomBodyText(), 3f);
     }
-    
+    private List<string> fuckBitches = new List<string>()
+    {
+ "You played Bald Guys 3 all week, died to the barber, ended your for haironour run.",
+    "You spilled orange juice on your laptop and had to miss your capstone presentation.",
+"BilkBong released and you skipped all of your classes. Did you even play the first one?",
+    "You were too busy playing [NAME OF OUR GAME] and forgot to charge your laptop.",
+    "You spent all week playing game jam submissions.",
+    "You ate too many caniacs and had too many bobas and took a fat 5 day nap.",
+    "You watched too many speedruns of OOT (copyright) and now you Stale Reference Manipulation'd your brain.",
+    "You played 'Cutting it Reel Close' and was so inspired that you didn't want to do your paper.",
+    "You tried playing the new [INSERT UE5 GAME] and compiling shaders took you 5 days straight and your computer caught on fire. Tough.",
+    "You tried convincing your friends to create an online real-time DND for a 48 hour game jam, and you researched and made a presentation about Unity Online Services that took all week, and you end up not even making an online multiplayer game."
+    };
     private string GetRandomBodyText()
     {
-        return "";
+        return fuckBitches[UnityEngine.Random.Range(0, fuckBitches.Count)];
     }
 }
