@@ -11,7 +11,7 @@ public class EnergyBar : MonoBehaviour
     private float _lerpVal = 1;
     private float _targetVal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         BarMat = new Material(BarImage.material);
         BarImage.material = BarMat;
